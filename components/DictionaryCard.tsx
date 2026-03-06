@@ -226,8 +226,8 @@ const styles = StyleSheet.create({
     },
     mainRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
     thaiBlock: { flex: 2 },
-    thaiWord: { fontFamily: 'Kanit_600SemiBold', fontSize: 28, letterSpacing: 0.5 },
-    phonetic: { fontFamily: 'Kanit', fontSize: 14, color: '#AAA', marginTop: 2 },
+    thaiWord: { fontFamily: 'Kanit_600SemiBold', fontSize: 28, letterSpacing: 3, lineHeight: 42 },
+    phonetic: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA', marginTop: 4 },
     meaningBlock: { flex: 2, alignItems: 'flex-start', gap: 6 },
     zhTW: { fontFamily: 'Prompt_500Medium', fontSize: 18, color: '#333' },
     toneBadge: { paddingHorizontal: 8, paddingVertical: 4, borderRadius: 6 },
@@ -235,5 +235,5 @@ const styles = StyleSheet.create({
     audioBtn: { width: 50, height: 50, borderRadius: 25, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center' },
     audioIcon: { fontSize: 22, color: '#666' },
     noteBox: { marginTop: 14, paddingTop: 12, borderTopWidth: 1 },
-    noteText: { fontFamily: 'Kanit', fontSize: 15, color: '#777', lineHeight: 22 },
+    noteText: { fontFamily: 'Kanit', fontSize: 16, color: '#666', lineHeight: 26 },
 });

@@ -112,13 +112,8 @@ export default function CharacterLabWidget() {
         <View>
             <View style={styles.canvasContainer}>
                 <View style={styles.fontPreviewBox}>
-                    <Text style={[
-                        styles.charDisplay,
-                        { color: accentColor + '20' },
-                        { fontFamily: isLoopless ? 'Kanit' : 'Sarabun' }
-                    ]}>
-                        {currentLesson.letter}
-                    </Text>
+                    {/* 移除背景 Text，改用 SVG Ghost Path 作為引導 */}
+                    <View style={{ height: 140, width: 140 }} />
                     <Text style={styles.fontNameHint}>
                         {isLoopless ? 'Loopless (Kanit)' : 'Headed (Sarabun)'}
                     </Text>
@@ -242,8 +237,8 @@ const styles = StyleSheet.create({
     // Guide Styles
     guideContainer: { backgroundColor: '#FFF', borderRadius: 20, padding: 20, maxHeight: 500, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2 },
     guideCard: { backgroundColor: '#F9F9F9', padding: 18, borderRadius: 14, marginBottom: 18 },
-    guideTitle: { fontFamily: 'Prompt_700Bold', fontSize: 17, color: '#333', marginBottom: 10, letterSpacing: 0.5 },
-    guideText: { fontFamily: 'Kanit', fontSize: 16, color: '#555', lineHeight: 28 },
+    guideTitle: { fontFamily: 'Prompt_700Bold', fontSize: 20, color: '#333', marginBottom: 12, letterSpacing: 1 },
+    guideText: { fontFamily: 'Kanit', fontSize: 18, color: '#555', lineHeight: 32 },
     bold: { fontWeight: '700', color: '#111' },
     highlight: { color: '#000', backgroundColor: '#FFEBB5', fontWeight: '600' },
     step: { fontWeight: '700', color: '#FFF', backgroundColor: '#999', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, overflow: 'hidden', fontSize: 13 }
