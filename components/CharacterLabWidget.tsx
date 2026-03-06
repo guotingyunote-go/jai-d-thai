@@ -26,12 +26,27 @@ export default function CharacterLabWidget() {
         }
     }, [index, activeTab]);
 
-    const startTracing = () => {
+    const startTracing = async () => {
         progress.setValue(0);
         emojiOpacity.setValue(1);
 
-        // 發音：唸出字母的名字 (例如：กอ ไก่)
-        Speech.speak(currentLesson.nameThai, { language: 'th-TH', rate: 0.85 });
+        try {
+            // Haptics safe fail
+            try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); } catch (e) { }
+
+            let voiceId = undefined;
+            const voices = await Speech.getAvailableVoicesAsync();
+            const thaiVoices = voices.filter(v => v.language.toLowerCase().startsWith('th'));
+            if (thaiVoices.length > 0) {
+                // 字母唸法不需要分男女聲，直接取一個最佳的女聲音質或第一個
+                let bestVoice = thaiVoices.find(v => v.quality === 'Enhanced' && (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('kanya')));
+                if (!bestVoice) bestVoice = thaiVoices[0];
+                voiceId = bestVoice?.identifier;
+            }
+            Speech.speak(currentLesson.nameThai, { language: 'th-TH', rate: 0.85, voice: voiceId });
+        } catch (err) {
+            console.warn('Speech failed', err);
+        }
 
         Animated.sequence([
             // 停頓一下讓使用者先看到 emoji
