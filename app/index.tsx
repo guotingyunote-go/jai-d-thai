@@ -161,9 +161,17 @@ export default function Home() {
                     </View>
                 </View>
 
-                {/* 單字清單：這裡 zIndex 設低一點 */}
+                {/* 單字清單：這裡 zIndex 設低一點。加入滑桿（ScrollView）限制高度，避免畫面太長 */}
                 <View style={[styles.listContainer, { zIndex: 1 }]}>
-                    {filteredDict.map(renderDictionaryCard)}
+                    <ScrollView
+                        style={{ maxHeight: 450, paddingRight: 4 }}
+                        nestedScrollEnabled={true}
+                        showsVerticalScrollIndicator={true}
+                    >
+                        {filteredDict.map(renderDictionaryCard)}
+                        {/* 底部留點空白確保能滑到底 */}
+                        <View style={{ height: 20 }} />
+                    </ScrollView>
                 </View>
 
                 {/* ── Tier 3: Character Lab 🖊️ 放到最後 ── */}

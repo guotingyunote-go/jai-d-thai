@@ -77,18 +77,18 @@ export default function VibeToggle() {
 }
 
 const styles = StyleSheet.create({
-    outerContainer: { gap: 12, marginVertical: 12 },
+    outerContainer: { gap: 10, marginVertical: 8 },
     container: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 14,
-        paddingHorizontal: 24,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
         borderRadius: 32,
     },
     labelWrapper: { alignItems: 'center' },
-    emoji: { fontSize: 20 },
-    switch: { marginHorizontal: 16 },
+    emoji: { fontSize: 18 },
+    switch: { marginHorizontal: 12 },
     label: { fontFamily: 'Kanit_600SemiBold', fontSize: 13, marginTop: 2 },
     activeText: { color: '#FFFFFF' },
     inactiveText: { color: 'rgba(255,255,255,0.5)' },
