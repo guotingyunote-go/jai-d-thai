@@ -1,0 +1,174 @@
+export interface DictionaryEntry {
+    id: string;
+    zhTW: string;       // 繁體中文
+    thai: string;       // 泰語文字
+    phonetic: string;   // 羅馬拼音
+    tone: string;       // 語境語調
+    note?: string;      // 文化註記（可選）
+    mode: 'faith' | 'street' | 'common';
+    category: string;   // 子分類
+}
+
+export const DICTIONARY: DictionaryEntry[] = [
+    // ── 禮貌與生存 (Survival) ──
+    { id: 'cv-1', zhTW: '你好 / 再見', thai: 'สวัสดี', phonetic: 'sa-wàt-dii', tone: '親切', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-2', zhTW: '早安', thai: 'อรุณสวัสดิ์', phonetic: 'a-run-sa-wàt', tone: '正式', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-3', zhTW: '晚安', thai: 'ราตรีสวัสดิ์', phonetic: 'ra-trii-sa-wàt', tone: '正式', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-4', zhTW: '謝謝', thai: 'ขอบคุณ', phonetic: 'khòop-khun', tone: '誠摯', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-5', zhTW: '不客氣 / 歡迎', thai: 'ยินดี', phonetic: 'yin-dii', tone: '大方', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-6', zhTW: '沒關係', thai: 'บ่อเป็นหยัง', phonetic: 'bòo pen nyǎng', tone: '隨和', mode: 'street', category: '禮貌與生存', note: '泰北口語' },
+    { id: 'cv-7', zhTW: '請問 / 拜託', thai: 'ขอ...', phonetic: 'khǒo', tone: '請求', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-8', zhTW: '對不起 / 不好意思', thai: 'ขอโทษ', phonetic: 'khǒo-tôot', tone: '抱歉', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-9', zhTW: '我不懂', thai: 'บ่เข้าใจ', phonetic: 'mâi khâo-jai', tone: '困惑', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-10', zhTW: '請再說一次', thai: 'พูดอีกที', phonetic: 'phûut ìik thii', tone: '請求', mode: 'common', category: '禮貌與生存' },
+    { id: 'cv-11', zhTW: '不 (否定詞)', thai: 'ไม่', phonetic: 'mâi', tone: '否定', mode: 'common', category: '禮貌與生存' },
+
+    // ── 代名詞 (Pronouns) ──
+    { id: 'pr-1', zhTW: '我 (男)', thai: 'ผม', phonetic: 'pǒm', tone: '正式', mode: 'common', category: '代名詞' },
+    { id: 'pr-2', zhTW: '我 (女)', thai: 'ฉัน', phonetic: 'chǎn', tone: '親切', mode: 'common', category: '代名詞' },
+    { id: 'pr-3', zhTW: '我們', thai: 'เรา', phonetic: 'rao', tone: '包容', mode: 'common', category: '代名詞' },
+    { id: 'pr-4', zhTW: '你/您', thai: 'คุณ', phonetic: 'khun', tone: '禮貌', mode: 'common', category: '代名詞' },
+    { id: 'pr-5', zhTW: '他/她', thai: 'เขา', phonetic: 'khǎo', tone: '中性', mode: 'common', category: '代名詞' },
+    { id: 'pr-6', zhTW: '孩子 (對神自稱)', thai: 'ลูก', phonetic: 'lûuk', tone: '謙卑', mode: 'faith', category: '代名詞', note: '禱告常用' },
+
+    // ── 萬用動詞 (Verbs) ──
+    { id: 'vb-1', zhTW: '是 (to be)', thai: 'เป็น/คือ', phonetic: 'pen / khue', tone: '中性', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-2', zhTW: '有 (to have)', thai: 'มี', phonetic: 'mii', tone: '常用', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-3', zhTW: '想要', thai: 'อยาก', phonetic: 'yàak', tone: '期待', mode: 'street', category: '萬用動詞' },
+    { id: 'vb-4', zhTW: '需要', thai: 'ต้องการ', phonetic: 'dtông-gaan', tone: '正式', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-5', zhTW: '喜歡', thai: 'ชอบ', phonetic: 'chôop', tone: '開朗', mode: 'street', category: '萬用動詞' },
+    { id: 'vb-6', zhTW: '去', thai: 'ไป', phonetic: 'bpai', tone: '常用', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-7', zhTW: '來', thai: 'มา', phonetic: 'maa', tone: '常用', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-8', zhTW: '做', thai: 'ทำ', phonetic: 'tham', tone: '常用', mode: 'street', category: '萬用動詞' },
+    { id: 'vb-9', zhTW: '買', thai: 'ซื้อ', phonetic: 'súu', tone: '常用', mode: 'street', category: '萬用動詞' },
+    { id: 'vb-10', zhTW: '吃', thai: 'กิน', phonetic: 'gin', tone: '輕鬆', mode: 'street', category: '萬用動詞' },
+    { id: 'vb-11', zhTW: '做飯', thai: 'กับข้าว', phonetic: 'gàp-khâaw', tone: '日常', mode: 'street', category: '萬用動詞' },
+    { id: 'vb-12', zhTW: '學習', thai: 'เรียน', phonetic: 'riian', tone: '積極', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-13', zhTW: '睡覺', thai: 'นอน', phonetic: 'noon', tone: '放鬆', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-14', zhTW: '學泰語', thai: 'เรียนภาษาไทย', phonetic: 'riian paa-sǎa thai', tone: '努力', mode: 'common', category: '萬用動詞' },
+    { id: 'vb-15', zhTW: '祝福 (動詞)', thai: 'อวยพร', phonetic: 'uay-phon', tone: '溫暖', mode: 'faith', category: '萬用動詞' },
+    { id: 'vb-16', zhTW: '禱告', thai: 'อธิษฐาน', phonetic: 'at-ti-thǎan', tone: '敬虔', mode: 'faith', category: '萬用動詞' },
+
+    // ── 疑問詞 (Questions) ──
+    { id: 'qs-1', zhTW: '誰', thai: 'ใคร', phonetic: 'khrai', tone: '詢問', mode: 'common', category: '疑問詞' },
+    { id: 'qs-2', zhTW: '什麼', thai: 'อะไร', phonetic: 'a-rai', tone: '詢問', mode: 'common', category: '疑問詞' },
+    { id: 'qs-3', zhTW: '哪裡', thai: 'ที่ไหน', phonetic: 'tîi-nǎi', tone: '詢問', mode: 'common', category: '疑問詞' },
+    { id: 'qs-4', zhTW: '何時', thai: 'เมื่อไหร่', phonetic: 'mûea-rài', tone: '詢問', mode: 'common', category: '疑問詞' },
+    { id: 'qs-5', zhTW: '為什麼', thai: 'ทำไม', phonetic: 'tham-mai', tone: '詢問', mode: 'common', category: '疑問詞' },
+    { id: 'qs-6', zhTW: '如何', thai: 'ยังไง', phonetic: 'yang-ngai', tone: '詢問', mode: 'common', category: '疑問詞' },
+    { id: 'qs-7', zhTW: '多少錢 (北泰)', thai: 'เท่าใด', phonetic: 'tâo-dai', tone: '詢問', mode: 'street', category: '疑問詞' },
+
+    // ── 數字與時間 (Time & Numbers) ──
+    { id: 'tn-1', zhTW: '現在', thai: 'ตอนนี้', phonetic: 'dton-níi', tone: '常用', mode: 'common', category: '數字與時間' },
+    { id: 'tn-2', zhTW: '今天', thai: 'วันนี้', phonetic: 'wan-níi', tone: '常用', mode: 'common', category: '數字與時間' },
+    { id: 'tn-3', zhTW: '明天', thai: 'พรุ่งนี้', phonetic: 'phrûng-níi', tone: '常用', mode: 'common', category: '數字與時間' },
+    { id: 'tn-4', zhTW: '昨天', thai: 'เมื่อวาน', phonetic: 'mûea-waan', tone: '常用', mode: 'common', category: '數字與時間' },
+    { id: 'num-0', zhTW: '0', thai: 'ศูนย์', phonetic: 'sǔun', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-1', zhTW: '1', thai: 'หนึ่ง', phonetic: 'nùeng', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-2', zhTW: '2', thai: 'สอง', phonetic: 'sǎong', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-3', zhTW: '3', thai: 'สาม', phonetic: 'sǎam', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-4', zhTW: '4', thai: 'สี่', phonetic: 'sìi', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-5', zhTW: '5', thai: 'ห้า', phonetic: 'hâa', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-6', zhTW: '6', thai: 'หก', phonetic: 'hòk', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-7', zhTW: '7', thai: 'เจ็ด', phonetic: 'jèt', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-8', zhTW: '8', thai: 'แปด', phonetic: 'pàet', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-9', zhTW: '9', thai: 'เก้า', phonetic: 'gâo', tone: '數字', mode: 'common', category: '數字與時間' },
+    { id: 'num-10', zhTW: '10', thai: 'สิบ', phonetic: 'sìp', tone: '數字', mode: 'common', category: '數字與時間' },
+
+    // ── 購物與生活 ──
+    { id: 'sl-1', zhTW: '這個', thai: 'อันนี้', phonetic: 'an-níi', tone: '指代', mode: 'street', category: '購物與生活' },
+    { id: 'sl-1-2', zhTW: '那個', thai: 'อันนั้น', phonetic: 'an-nán', tone: '指代', mode: 'street', category: '購物與生活' },
+    { id: 'sl-2', zhTW: '多少錢', thai: 'เท่าไหร่', phonetic: 'tâo-rài', tone: '詢問', mode: 'street', category: '購物與生活' },
+    { id: 'sl-3', zhTW: '可以便宜一點嗎', thai: 'ลดได้ไหม', phonetic: 'lót dâi mǎi', tone: '詢問', mode: 'street', category: '購物與生活' },
+    { id: 'sl-4', zhTW: '太貴了', thai: 'แพงมาก', phonetic: 'phaeng mâak', tone: '驚訝', mode: 'street', category: '購物與生活' },
+    { id: 'sl-5', zhTW: '不要辣', thai: 'ไม่เผ็ด', phonetic: 'mâi phèt', tone: '要求', mode: 'street', category: '購物與生活' },
+    { id: 'sl-6', zhTW: '微辣', thai: 'เผ็ดนิดหน่อย', phonetic: 'phèt nít nòi', tone: '要求', mode: 'street', category: '購物與生活' },
+    { id: 'sl-7', zhTW: '結帳', thai: 'เช็คบิล', phonetic: 'chék bin', tone: '常用', mode: 'street', category: '購物與生活' },
+    { id: 'sl-8', zhTW: '廁所', thai: 'ห้องน้ำ', phonetic: 'hông-náam', tone: '急迫', mode: 'common', category: '購物與生活' },
+    { id: 'sl-9', zhTW: '錢', thai: 'เงิน', phonetic: 'nguen', tone: '中性', mode: 'street', category: '購物與生活' },
+    { id: 'sl-10', zhTW: '市場', thai: 'กาด', phonetic: 'gàat', tone: '在地', mode: 'street', category: '購物與生活', note: '泰北方言' },
+    { id: 'sl-11', zhTW: '學校', thai: 'โรงเรียน', phonetic: 'roong-riian', tone: '中性', mode: 'common', category: '購物與生活' },
+    { id: 'sl-12', zhTW: '這裡', thai: 'ที่นี่', phonetic: 'tîi-nîi', tone: '指代', mode: 'common', category: '購物與生活' },
+    { id: 'sl-13', zhTW: '工作', thai: 'งาน', phonetic: 'ngaan', tone: '勞碌', mode: 'common', category: '購物與生活' },
+    { id: 'sl-14', zhTW: '東西/物品', thai: 'ของ', phonetic: 'khǒong', tone: '指代', mode: 'street', category: '購物與生活' },
+    { id: 'sl-15', zhTW: '家人', thai: 'ครอบครัว', phonetic: 'krôop-krua', tone: '親密', mode: 'common', category: '購物與生活' },
+    { id: 'sl-16', zhTW: '吃飯', thai: 'กินข้าว', phonetic: 'gin-khâaw', tone: '輕鬆', mode: 'street', category: '購物與生活' },
+    { id: 'sl-17', zhTW: '辣', thai: 'เผ็ด', phonetic: 'phèt', tone: '刺激', mode: 'street', category: '購物與生活' },
+    { id: 'sl-18', zhTW: '昂貴', thai: 'แพง', phonetic: 'phaeng', tone: '驚呼', mode: 'street', category: '購物與生活' },
+    { id: 'sl-19', zhTW: '糯米/糯米飯', thai: 'ข้าวเหนียว', phonetic: 'khâaw-nǐaw', tone: '在地', mode: 'street', category: '購物與生活' },
+    { id: 'sl-20', zhTW: '粿條/麵', thai: 'ก๋วยเตี๋ยว', phonetic: 'gǔay-dtǐaw', tone: '常用', mode: 'street', category: '購物與生活' },
+    { id: 'sl-21', zhTW: '辣椒', thai: 'พริก', phonetic: 'phrík', tone: '警告', mode: 'street', category: '購物與生活' },
+
+    // ── 屬靈基本 (Faith Basics) ──
+    { id: 'ft-21', zhTW: '上帝', thai: 'พระเจ้า', phonetic: 'phrá-jâo', tone: '崇敬', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-22', zhTW: '耶穌', thai: 'พระเยซู', phonetic: 'phrá-yee-suu', tone: '崇敬', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-23', zhTW: '聖靈', thai: 'พระวิญญาณ', phonetic: 'phrá-win-yaan', tone: '崇敬', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-1', zhTW: '上帝祝福你', thai: 'พระเจ้าอวยพร', phonetic: 'phrá-jâo uay-phon', tone: '溫暖', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-2', zhTW: '感謝上帝', thai: 'ขอบคุณพระเจ้า', phonetic: 'khòop-khun phrá-jâo', tone: '感激', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-20', zhTW: '再見 (期待再會)', thai: 'พบกันใหม่', phonetic: 'phóp-gan-mǎi', tone: '期盼', mode: 'common', category: '祝禱與宣告' },
+    { id: 'ft-7', zhTW: '阿們', thai: 'อาเมน', phonetic: 'aa-meen', tone: '確信', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-8', zhTW: '我愛耶穌', thai: 'รักพระเยซู', phonetic: 'rák phrá-yee-suu', tone: '熱愛', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-5', zhTW: '祈求恩典', thai: 'ขอพระคุณ', phonetic: 'khǒo phrá-khun', tone: '懇求', mode: 'faith', category: '祝禱與宣告' },
+    { id: 'ft-17', zhTW: '請求祝福', thai: 'ขอพร', phonetic: 'khǒo-phon', tone: '懇求', mode: 'faith', category: '祝禱與宣告' },
+
+    // ── 教會生活 (Church Life) ──
+    { id: 'ft-4', zhTW: '樂意服事', thai: 'ยินดีรับใช้', phonetic: 'yin-dii ràp-chái', tone: '謙卑', mode: 'faith', category: '教會生活' },
+    { id: 'ft-13', zhTW: '教會', thai: 'คริสตจักร', phonetic: 'khrit-dta-jàk', tone: '中性', mode: 'faith', category: '教會生活' },
+    { id: 'ft-10', zhTW: '弟兄姊妹', thai: 'พี่น้อง', phonetic: 'phîi-nóong', tone: '親切', mode: 'faith', category: '教會生活' },
+    { id: 'ft-11', zhTW: '為（某人）禱告', thai: 'อธิษฐานเผื่อ', phonetic: 'at-ti-thǎan phùea', tone: '代求', mode: 'faith', category: '教會生活' },
+    { id: 'ft-13-2', zhTW: '去教堂/做禮拜', thai: 'มาโบสถ์', phonetic: 'maa-bòot', tone: '常用', mode: 'faith', category: '教會生活' },
+    { id: 'ft-14', zhTW: '唱（詩）歌', thai: 'ร้องเพลง', phonetic: 'róong-pleeng', tone: '喜樂', mode: 'faith', category: '教會生活' },
+
+    // ── 屬靈生命 (Spiritual Life) ──
+    { id: 'ft-3', zhTW: '鼓勵/激勵', thai: 'หนุนใจ', phonetic: 'nǔn-jai', tone: '正向', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-6', zhTW: '我相信', thai: 'เชื่อ', phonetic: 'chûea', tone: '堅定', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-12', zhTW: '有盼望', thai: 'มีความหวัง', phonetic: 'mii kwaam-wǎng', tone: '正面', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-15', zhTW: '滿有喜樂', thai: 'ชื่นชมยินดี', phonetic: 'chûen-chom-yin-dii', tone: '充滿', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-16', zhTW: '平安', thai: 'สันติสุข', phonetic: 'sǎn-ti-sùk', tone: '寧靜', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-18', zhTW: '信心/信念', thai: 'ศรัทธา', phonetic: 'sàt-thaa', tone: '堅毅', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-19', zhTW: '理解/聽懂了', thai: 'เข้าใจ', phonetic: 'khâo-jai', tone: '確認', mode: 'common', category: '屬靈生命' },
+    { id: 'ft-30', zhTW: '向主/向祂', thai: 'ต่อพระองค์', phonetic: 'dtòo phrá-ong', tone: '敬虔', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-31', zhTW: '盡心/全心', thai: 'หมดหัวใจ', phonetic: 'mòt hǔa-jai', tone: '全力', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-32', zhTW: '應許', thai: 'พระสัญญา', phonetic: 'phrá-sǎn-yaa', tone: '堅定', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-33', zhTW: '恩典', thai: 'พระคุณ', phonetic: 'phrá-khun', tone: '神聖', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-34', zhTW: '祝福 (名詞)', thai: 'พระพร', phonetic: 'phrá-phon', tone: '吉祥', mode: 'faith', category: '屬靈生命' },
+    { id: 'ft-35', zhTW: '教會 (建築)', thai: 'โบสถ์', phonetic: 'bòot', tone: '中性', mode: 'faith', category: '教會生活' },
+    { id: 'ft-36', zhTW: '聖經', thai: 'พระคัมภีร์', phonetic: 'phrá-kham-phii', tone: '神聖', mode: 'faith', category: '教會生活' },
+
+    // ── 敬拜讚美 (Worship & Praise) ──
+    { id: 'w-4', zhTW: '萬王之王', thai: 'จอมราชา', phonetic: 'jom-raa-chaa', tone: '尊榮', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-5', zhTW: '天父', thai: 'พระบิดา', phonetic: 'phrá-bi-daa', tone: '親切', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-6', zhTW: '聖潔', thai: 'บริสุทธิ์', phonetic: 'bo-ri-sut', tone: '崇敬', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-7', zhTW: '偉大', thai: 'ยิ่งใหญ่', phonetic: 'yîng-yài', tone: '讚嘆', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-9', zhTW: '愛', thai: 'ความรัก', phonetic: 'kwaam-rák', tone: '溫暖', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-11', zhTW: '敬拜', thai: 'นมัสการ', phonetic: 'na-mát-sa-gaan', tone: '虔誠', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-12', zhTW: '讚美', thai: 'สรรเสริญ', phonetic: 'sǎn-sǎen', tone: '喜樂', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-13', zhTW: '高舉', thai: 'ยกชู', phonetic: 'yók-chuu', tone: '熱情', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-14', zhTW: '降服/願意', thai: 'ยอม', phonetic: 'yaam', tone: '謙卑', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-16', zhTW: '信靠', thai: 'วางใจ', phonetic: 'waang-jai', tone: '安息', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-19', zhTW: '跟隨', thai: 'ติดตาม', phonetic: 'dtìt-dtaam', tone: '堅定', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-10', zhTW: '渴慕', thai: 'กระหาย', phonetic: 'grà-hǎai', tone: '期待', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-23', zhTW: '生命', thai: 'ชีวิต', phonetic: 'chii-wít', tone: '敬意', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-24', zhTW: '心', thai: 'หัวใจ', phonetic: 'hǔa-jai', tone: '真誠', mode: 'common', category: '敬拜讚美' },
+    { id: 'w-25', zhTW: '靈魂', thai: 'วิญญาณ', phonetic: 'win-yaan', tone: '深刻', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-26', zhTW: '真理', thai: 'ความจริง', phonetic: 'kwaam-jing', tone: '堅定', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-27', zhTW: '光', thai: 'ความสว่าง', phonetic: 'kwaam-sa-wàang', tone: '盼望', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-28', zhTW: '永恆', thai: 'นิรันดร์', phonetic: 'ní-ran', tone: '莊嚴', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-29', zhTW: '勝利', thai: 'ชัยชนะ', phonetic: 'chai-chá-ná', tone: '凱旋', mode: 'faith', category: '敬拜讚美' },
+    { id: 'w-30', zhTW: '配得', thai: 'สมควร', phonetic: 'sǒm-khuan', tone: '崇敬', mode: 'faith', category: '敬拜讚美' },
+
+    // ── 營會指令 (Kids Camp) ──
+    { id: 'k-1', zhTW: '注意', thai: 'ระวัง', phonetic: 'rá-wa-ng', tone: '提醒', mode: 'common', category: '營會指令' },
+    { id: 'k-2', zhTW: '聽這邊', thai: 'ฟังทางนี้', phonetic: 'fang thaang níi', tone: '指令', mode: 'street', category: '營會指令' },
+    { id: 'k-3', zhTW: '用眼睛看，用耳聽', thai: 'ตาดูหูฟัง', phonetic: 'dtaa-duu hǔu-fang', tone: '指令', mode: 'street', category: '營會指令', note: '兒教常用' },
+    { id: 'k-4', zhTW: '安靜/噓', thai: 'เงียบๆ', phonetic: 'ngîap-ngîap', tone: '維持秩序', mode: 'common', category: '營會指令' },
+    { id: 'k-5', zhTW: '倒數計時', thai: 'นับถอยหลัง', phonetic: 'náp tǒi lǎang', tone: '指令', mode: 'common', category: '營會指令' },
+    { id: 'k-6', zhTW: '10秒鐘', thai: 'สิบวินาที', phonetic: 'sìp wí-naa-thii', tone: '計時', mode: 'common', category: '營會指令' },
+    { id: 'k-7', zhTW: '準備好', thai: 'เตรียมตัว', phonetic: 'dtriiam-dtua', tone: '指令', mode: 'common', category: '營會指令' },
+    { id: 'k-8', zhTW: '開始', thai: 'เริ่มได้', phonetic: 'rôem dâi', tone: '啟動', mode: 'common', category: '營會指令' },
+    { id: 'k-9', zhTW: '超棒的', thai: 'เก่งมาก', phonetic: 'gèng mâak', tone: '鼓勵', mode: 'common', category: '營會指令' },
+    { id: 'k-10', zhTW: '加油', thai: 'สู้ๆ', phonetic: 'sûu-sûu', tone: '打氣', mode: 'common', category: '營會指令' },
+    { id: 'k-11', zhTW: '準備好了嗎？', thai: 'พร้อมหรือยัง', phonetic: 'phróom-rǔea-yang', tone: '詢問', mode: 'common', category: '營會指令' },
+    { id: 'k-12', zhTW: '聽懂了嗎？', thai: 'เข้าใจไหม', phonetic: 'khâo-jai mǎi', tone: '確認', mode: 'common', category: '營會指令' },
+    { id: 'k-13', zhTW: '下一位', thai: 'คนต่อไป', phonetic: 'khon dtòo-bpai', tone: '指令', mode: 'common', category: '營會指令' },
+];

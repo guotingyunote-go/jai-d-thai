@@ -1,0 +1,293 @@
+import * as Haptics from 'expo-haptics';
+import * as Speech from 'expo-speech';
+import React, { useState } from 'react';
+import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { DICTIONARY } from '../constants/Dictionary';
+import { LOGICAL_OBJECTS, PRONOUNS, SentencePart, VERBS } from '../constants/Sentences';
+import { useVibe } from '../context/VibeContext';
+
+export default function SentenceBuilderWidget() {
+    const { mode, userGender, fontType } = useVibe() as any;
+    const isFaith = mode === 'faith';
+    const accentColor = isFaith ? '#7851A9' : '#14B886';
+    const thaiFont = fontType === 'headed' ? 'Sarabun_700Bold' : 'Kanit_600SemiBold';
+
+    const [selection, setSelection] = useState(() => {
+        const verbs = getFilteredVerbs();
+        const v = verbs[0] || VERBS[0];
+        const pronouns = getFilteredPronouns();
+        const p = pronouns[0] || PRONOUNS[0];
+        return {
+            p: p,
+            v: v,
+            o: (LOGICAL_OBJECTS[v.zhTW] || LOGICAL_OBJECTS[v.thai])?.[0]
+        };
+    });
+
+    const [pickerType, setPickerType] = useState<'p' | 'v' | 'o' | null>(null);
+
+    function getFilteredPronouns() {
+        return PRONOUNS.filter(p => {
+            if (p.thai === 'ผม' && userGender !== 'male') return false;
+            if (p.thai === 'ฉัน' && userGender !== 'female') return false;
+            if (p.category && p.category !== 'both' && p.category !== mode) return false;
+            return true;
+        });
+    }
+
+    function getFilteredVerbs() {
+        return VERBS.filter(v => !v.category || v.category === 'both' || v.category === mode);
+    }
+
+    function getFilteredObjects(currentVerb: SentencePart) {
+        // 1. 獲取邏輯建議
+        const logical = LOGICAL_OBJECTS[currentVerb.zhTW] || LOGICAL_OBJECTS[currentVerb.thai] || [];
+
+        // 2. 從全局字典中自動抓取相關詞彙作為補充 (排除動詞類別，抓取名詞/生活類)
+        const dictAdditions = DICTIONARY.filter(entry => {
+            // 排除掉已經在邏輯清單中的
+            if (logical.some(l => l.thai === entry.thai)) return false;
+            // 模式過濾
+            if (entry.mode !== 'common' && entry.mode !== mode) return false;
+            // 分類過濾 (排除動詞、疑問詞、數字等不適合作為受詞的)
+            const invalidCategories = ['萬用動詞', '疑問詞', '數字與時間'];
+            return !invalidCategories.includes(entry.category);
+        }).map(entry => ({
+            thai: entry.thai,
+            phonetic: entry.phonetic,
+            zhTW: entry.zhTW,
+            category: entry.category as any
+        }));
+
+        const combined = [...logical, ...dictAdditions];
+
+        // ✨ [防錯邏輯] 避免雙重否定：如果動詞選了「不 (ไม่)」，則過濾掉本身已帶有「不」的受詞
+        const filtered = combined.filter(o => {
+            if (currentVerb.thai === 'ไม่' && o.thai.startsWith('ไม่')) return false;
+            return true;
+        });
+
+        return filtered.filter(o => !o.category || o.category === 'both' || o.category === mode);
+    }
+
+    // ✨ 性別同步邏輯：當外部性別切換時，自動更換代名詞
+    React.useEffect(() => {
+        if (selection.p.thai === 'ผม' && userGender === 'female') {
+            const chan = PRONOUNS.find(p => p.thai === 'ฉัน');
+            if (chan) setSelection(prev => ({ ...prev, p: chan }));
+        } else if (selection.p.thai === 'ฉัน' && userGender === 'male') {
+            const pom = PRONOUNS.find(p => p.thai === 'ผม');
+            if (pom) setSelection(prev => ({ ...prev, p: pom }));
+        }
+    }, [userGender]);
+
+    const randomize = () => {
+        try { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); } catch (e) { }
+        const fv = getFilteredVerbs();
+        const rv = fv[Math.floor(Math.random() * fv.length)];
+        const fo = getFilteredObjects(rv);
+        const fp = getFilteredPronouns();
+
+        setSelection({
+            p: fp[Math.floor(Math.random() * fp.length)],
+            v: rv,
+            o: fo[Math.floor(Math.random() * fo.length)] || (LOGICAL_OBJECTS[rv.zhTW] || LOGICAL_OBJECTS[rv.thai])[0]
+        });
+    };
+
+    const playSound = async (text: string) => {
+        try {
+            try { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); } catch (e) { }
+            let voiceId = undefined;
+            const voices = await Speech.getAvailableVoicesAsync();
+            const thaiVoices = voices.filter(v => v.language.toLowerCase().startsWith('th'));
+            if (thaiVoices.length > 0) {
+                let genderVoice = thaiVoices.find(v => {
+                    const name = v.name.toLowerCase();
+                    if (userGender === 'male') return name.includes('male') || name.includes('narat') || name.includes('man');
+                    return name.includes('female') || name.includes('kanya') || name.includes('woman');
+                });
+                if (!genderVoice) genderVoice = thaiVoices.find(v => v.quality === 'Enhanced') || thaiVoices[0];
+                voiceId = genderVoice?.identifier;
+            }
+            Speech.speak(text, { language: 'th-TH', rate: 0.8, voice: voiceId });
+        } catch (err) { }
+    };
+
+    const shouldShowParticle = () => {
+        // 1. 如果主詞是「對神自稱」的 ลูก，代表是在禱告，不放人間的禮貌助詞
+        if (selection.p.thai === 'ลูก') return false;
+
+        // 2. 如果受詞是「營會指令」分類，通常是高能量喊話，省略助詞更道地
+        if ((selection.o?.category as string) === '營會指令') return false;
+
+        return true;
+    };
+
+    const speak = async () => {
+        const showP = shouldShowParticle();
+        const suffix = showP ? (userGender === 'male' ? 'ครับ' : 'เจ้า') : '';
+        const fullText = `${selection.p.thai}${selection.v.thai}${selection.o.thai} ${suffix}`;
+        playSound(fullText);
+    };
+
+    const Chip = ({ part, type, onPress }: { part: SentencePart, type: string, onPress: () => void }) => (
+        <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={onPress}
+            style={[styles.chip, { backgroundColor: accentColor + '08', borderColor: accentColor + '20' }]}
+        >
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', alignItems: 'center', marginBottom: 4 }}>
+                <Text style={styles.chipLabel}>{type}</Text>
+                <TouchableOpacity onPress={() => playSound(part.thai)}>
+                    <Text style={{ fontSize: 10 }}>🔊</Text>
+                </TouchableOpacity>
+            </View>
+            <Text style={[styles.chipThai, { color: accentColor, fontFamily: thaiFont }]}>{part.thai}</Text>
+            <Text style={styles.chipPhonetic}>{part.phonetic}</Text>
+            <Text style={styles.chipZh}>{part.zhTW}</Text>
+            <View style={{ marginTop: 4, opacity: 0.3 }}>
+                <Text style={{ fontSize: 8 }}>✎ 點擊修改</Text>
+            </View>
+        </TouchableOpacity>
+    );
+
+    const ParticleChip = () => {
+        const isMale = userGender === 'male';
+        const thai = isMale ? 'ครับ' : 'เจ้า';
+        return (
+            <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => playSound(thai)}
+                style={[styles.chip, styles.particleChip, { backgroundColor: accentColor + '15', borderColor: accentColor }]}
+            >
+                <Text style={[styles.chipLabel, { color: accentColor }]}>語助詞 🔊</Text>
+                <Text style={[styles.chipThai, { color: accentColor, fontFamily: thaiFont }]}>{thai}</Text>
+                <Text style={styles.chipPhonetic}>{isMale ? 'kráp' : 'jâo'}</Text>
+                <Text style={[styles.chipZh, { color: accentColor, opacity: 0.8 }]}>{isMale ? '先生' : '女士'}</Text>
+            </TouchableOpacity>
+        );
+    };
+
+    // 選項渲染
+    const renderPicker = () => {
+        if (!pickerType) return null;
+        let items: SentencePart[] = [];
+        let title = '';
+
+        if (pickerType === 'p') { items = getFilteredPronouns(); title = '選擇代名詞'; }
+        else if (pickerType === 'v') { items = getFilteredVerbs(); title = '選擇動詞'; }
+        else { items = getFilteredObjects(selection.v); title = '選擇受詞'; }
+
+        return (
+            <Modal transparent animationType="fade" visible={!!pickerType}>
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>{title}</Text>
+                            <TouchableOpacity onPress={() => setPickerType(null)}>
+                                <Text style={styles.closeBtn}>✕ 關閉</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <ScrollView style={{ maxHeight: 400 }}>
+                            {items.map((item, idx) => (
+                                <TouchableOpacity
+                                    key={idx}
+                                    style={styles.pickerItem}
+                                    onPress={() => {
+                                        if (pickerType === 'p') setSelection({ ...selection, p: item });
+                                        else if (pickerType === 'v') {
+                                            const newObjs = getFilteredObjects(item);
+                                            setSelection({ ...selection, v: item, o: newObjs[0] });
+                                        }
+                                        else setSelection({ ...selection, o: item });
+                                        setPickerType(null);
+                                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                                    }}
+                                >
+                                    <View>
+                                        <Text style={[styles.pickerThai, { fontFamily: thaiFont }]}>{item.thai}</Text>
+                                        <Text style={styles.pickerSub}>{item.phonetic} - {item.zhTW}</Text>
+                                    </View>
+                                    {((pickerType === 'p' && selection.p === item) ||
+                                        (pickerType === 'v' && selection.v === item) ||
+                                        (pickerType === 'o' && selection.o === item)) &&
+                                        <Text style={{ color: accentColor }}>✓</Text>
+                                    }
+                                </TouchableOpacity>
+                            ))}
+                        </ScrollView>
+                    </View>
+                </View>
+            </Modal>
+        );
+    };
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <View style={{ flex: 1 }}>
+                    <Text style={[styles.title, { color: accentColor }]}>句型工作坊 🧱</Text>
+                    <Text style={styles.subtitle}>
+                        點擊下方色塊可自行更換單字，打造你的專屬句子。結語助詞將根據你的性別自動切換。
+                    </Text>
+                </View>
+                <TouchableOpacity style={[styles.randomBtn, { backgroundColor: accentColor }]} onPress={randomize}>
+                    <Text style={styles.randomBtnText}>🎲 隨機</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.slotContainer}>
+                <Chip part={selection.p} type="主語" onPress={() => setPickerType('p')} />
+                <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
+                <Chip part={selection.v} type="動詞" onPress={() => setPickerType('v')} />
+                <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
+                <Chip part={selection.o} type="受詞" onPress={() => setPickerType('o')} />
+                <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
+                {shouldShowParticle() ? <ParticleChip /> : (
+                    <View style={[styles.chip, { backgroundColor: '#F8F8F8', borderColor: '#EEE', opacity: 0.5 }]}>
+                        <Text style={styles.chipLabel}>語助詞</Text>
+                        <Text style={[styles.chipThai, { color: '#CCC' }]}>-</Text>
+                        <Text style={styles.chipZh}>無需結尾</Text>
+                    </View>
+                )}
+            </View>
+
+            <TouchableOpacity style={[styles.mainSpeakBtn, { backgroundColor: accentColor }]} onPress={speak}>
+                <Text style={styles.mainSpeakText}>🔊 播放完整句子</Text>
+            </TouchableOpacity>
+
+            {renderPicker()}
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        width: '100%', marginBottom: 24, backgroundColor: '#FFF', padding: 20, borderRadius: 24,
+        shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2
+    },
+    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 },
+    title: { fontFamily: 'Prompt_700Bold', fontSize: 18 },
+    subtitle: { fontFamily: 'Kanit', fontSize: 11, color: '#AAA', lineHeight: 15, marginTop: 4, flex: 1, paddingRight: 8 },
+    randomBtn: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 10 },
+    randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 12 },
+    slotContainer: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+    chip: { flex: 1, padding: 8, borderRadius: 14, borderWidth: 1, alignItems: 'center' },
+    chipLabel: { fontFamily: 'Kanit', fontSize: 9, color: '#BBB' },
+    chipThai: { fontSize: 16 },
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 9, color: '#AAA' },
+    chipZh: { fontFamily: 'Prompt_500Medium', fontSize: 10, color: '#777' },
+    connector: { paddingHorizontal: 1 },
+    particleChip: { borderWidth: 2, borderStyle: 'dashed' },
+    mainSpeakBtn: { marginTop: 20, width: '100%', height: 48, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
+    mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 14 },
+    modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' },
+    modalContent: { backgroundColor: '#FFF', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 40 },
+    modalHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20, alignItems: 'center' },
+    modalTitle: { fontFamily: 'Prompt_700Bold', fontSize: 18 },
+    closeBtn: { color: '#666', fontSize: 14 },
+    pickerItem: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 15, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
+    pickerThai: { fontSize: 20, color: '#333' },
+    pickerSub: { fontSize: 12, color: '#888', marginTop: 2 }
+});

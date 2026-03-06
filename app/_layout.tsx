@@ -1,24 +1,40 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { Kanit_400Regular, Kanit_600SemiBold } from '@expo-google-fonts/kanit';
+import { Prompt_400Regular, Prompt_500Medium, Prompt_700Bold } from '@expo-google-fonts/prompt';
+import { Sarabun_400Regular, Sarabun_700Bold } from '@expo-google-fonts/sarabun';
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
+import { VibeProvider } from '../context/VibeContext';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+    const [fontsLoaded] = useFonts({
+        Kanit: Kanit_400Regular,
+        Kanit_600SemiBold,
+        Prompt: Prompt_400Regular,
+        Prompt_500Medium,
+        Prompt_700Bold,
+        Sarabun: Sarabun_400Regular,
+        Sarabun_700Bold,
+    });
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    useEffect(() => {
+        if (fontsLoaded) {
+            SplashScreen.hideAsync();
+        }
+    }, [fontsLoaded]);
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
+    return (
+        <VibeProvider>
+            <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="index" />
+            </Stack>
+        </VibeProvider>
+    );
 }
