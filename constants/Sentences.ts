@@ -29,7 +29,7 @@ export const VERBS: SentencePart[] = [
     { thai: 'ต้องการ', phonetic: 'dtông-gaan', zhTW: '需要', category: 'both' },
     { thai: 'ชอบ', phonetic: 'chôop', zhTW: '喜歡', category: 'street' },
     { thai: 'ทำ', phonetic: 'tham', zhTW: '做', category: 'street' },
-    { thai: 'ซื้อ', phonetic: 'súu', zhTW: '買', category: 'street' },
+    { thai: 'ซื้อ', phonetic: 'sʉ́ʉ', zhTW: '買', category: 'street' },
     { thai: 'กิน', phonetic: 'gin', zhTW: '吃', category: 'street' },
     { thai: 'เรียน', phonetic: 'riian', zhTW: '學習', category: 'street' },
     { thai: 'นอน', phonetic: 'noon', zhTW: '睡覺', category: 'street' },
@@ -38,17 +38,19 @@ export const VERBS: SentencePart[] = [
     // ── 信仰 ──
     { thai: 'รัก', phonetic: 'rák', zhTW: '愛', category: 'both' },
     { thai: 'เชื่อ', phonetic: 'chûea', zhTW: '相信', category: 'faith' },
-    { thai: 'กระหาย', phonetic: 'grà-hǎai', zhTW: '渴慕', category: 'faith' },
+    { thai: 'โหยหา', phonetic: 'yǒi-hǎa', zhTW: '渴慕', category: 'faith' },
     { thai: 'อธิษฐาน', phonetic: 'at-ti-thǎan', zhTW: '禱告', category: 'faith' },
     { thai: 'อธิษฐานเผื่อ', phonetic: 'at-ti-thǎan phùea', zhTW: '為…禱告', category: 'faith' },
     { thai: 'อวยพร', phonetic: 'uay-phon', zhTW: '祝福', category: 'faith' },
     { thai: 'แบ่งปัน', phonetic: 'bàeng-pan', zhTW: '分享', category: 'faith' },
     { thai: 'นมัสการ', phonetic: 'na-mát-sa-gaan', zhTW: '敬拜', category: 'faith' },
-    { thai: 'สรรเสริญ', phonetic: 'sǎn-sǎen', zhTW: '讚美', category: 'faith' },
-    { thai: 'ยกชู', phonetic: 'yók-chuu', zhTW: '高舉', category: 'faith' },
-    { thai: 'ยอม', phonetic: 'yaam', zhTW: '降服/願意', category: 'faith' },
+    { thai: 'สรรเสริญ', phonetic: 'sǎn-sə̌ən', zhTW: '讚美', category: 'faith' },
+    { thai: 'ยกย่อง', phonetic: 'yók-yông', zhTW: '高舉', category: 'faith' },
+    { thai: 'ยอม', phonetic: 'yoom', zhTW: '降服/願意', category: 'faith' },
     { thai: 'วางใจ', phonetic: 'waang-jai', zhTW: '信靠', category: 'faith' },
     { thai: 'ติดตาม', phonetic: 'dtìt-dtaam', zhTW: '跟隨', category: 'faith' },
+    { thai: 'ถวาย', phonetic: 'thà-waai', zhTW: '獻上', category: 'faith' },
+    { thai: 'ขอบพระคุณ', phonetic: 'khòop phrá-khun', zhTW: '感謝', category: 'faith' },
 ];
 
 // NOTE: key 統一用 zhTW（中文），lookup 順序為 zhTW → thai
@@ -89,6 +91,7 @@ export const LOGICAL_OBJECTS: Record<string, SentencePart[]> = {
     '去': [
         { thai: 'กาด', phonetic: 'gàat', zhTW: '市場(泰北)', category: 'street' },
         { thai: 'ตลาด', phonetic: 'dta-làat', zhTW: '市場(泰語)', category: 'street' },
+        { thai: 'ห้องน้ำ', phonetic: 'hông-náam', zhTW: '廁所', category: 'both' },
         { thai: 'โบสถ์', phonetic: 'bòot', zhTW: '教會', category: 'faith' },
         { thai: 'โรงเรียน', phonetic: 'roong-riian', zhTW: '學校', category: 'street' },
         { thai: 'โรงพยาบาล', phonetic: 'roong-phá-yaa-baan', zhTW: '醫院', category: 'both' },
@@ -119,6 +122,7 @@ export const LOGICAL_OBJECTS: Record<string, SentencePart[]> = {
         { thai: 'ช่วย', phonetic: 'chûay', zhTW: '幫忙', category: 'both' },
     ],
     '需要': [
+        { thai: 'ห้องน้ำ', phonetic: 'hông-náam', zhTW: '廁所', category: 'both' },
         { thai: 'พระคุณ', phonetic: 'phrá-khun', zhTW: '恩典', category: 'faith' },
         { thai: 'พระพร', phonetic: 'phrá-phon', zhTW: '祝福', category: 'faith' },
         { thai: 'เงิน', phonetic: 'nguen', zhTW: '錢', category: 'street' },
@@ -225,10 +229,12 @@ export const LOGICAL_OBJECTS: Record<string, SentencePart[]> = {
         { thai: 'พระเจ้า', phonetic: 'phrá-jâo', zhTW: '上帝', category: 'faith' },
         { thai: 'พระเยซู', phonetic: 'phrá-yee-suu', zhTW: '耶穌', category: 'faith' },
         { thai: 'จอมราชา', phonetic: 'jom-raa-chaa', zhTW: '萬王之王', category: 'faith' },
+        { thai: 'พระนาม', phonetic: 'phrá-naam', zhTW: '聖名', category: 'faith' },
     ],
     '高舉': [
         { thai: 'พระนามพระเจ้า', phonetic: 'phrá-naam phrá-jâo', zhTW: '上帝的名', category: 'faith' },
         { thai: 'พระเยซู', phonetic: 'phrá-yee-suu', zhTW: '耶穌', category: 'faith' },
+        { thai: 'พระสิริ', phonetic: 'phrá-sì-rí', zhTW: '榮耀', category: 'faith' },
     ],
     '降服/願意': [
         { thai: 'ต่อพระองค์', phonetic: 'dtòo phrá-ong', zhTW: '向主', category: 'faith' },
@@ -242,5 +248,15 @@ export const LOGICAL_OBJECTS: Record<string, SentencePart[]> = {
         { thai: 'พระเยซู', phonetic: 'phrá-yee-suu', zhTW: '耶穌', category: 'faith' },
         { thai: 'ความจริง', phonetic: 'kwaam-jing', zhTW: '真理', category: 'faith' },
         { thai: 'ความสว่าง', phonetic: 'kwaam-sa-wàang', zhTW: '光', category: 'faith' },
+    ],
+    '獻上': [
+        { thai: 'ชีวิต', phonetic: 'chii-wít', zhTW: '生命', category: 'faith' },
+        { thai: 'หัวใจ', phonetic: 'hǔa-jai', zhTW: '心', category: 'faith' },
+        { thai: 'คำสรรเสริญ', phonetic: 'kham sǎn-sə̌ən', zhTW: '讚美', category: 'faith' },
+    ],
+    '感謝': [
+        { thai: 'พระเจ้า', phonetic: 'phrá-jâo', zhTW: '上帝', category: 'faith' },
+        { thai: 'พระคุณ', phonetic: 'phrá-khun', zhTW: '恩典', category: 'faith' },
+        { thai: 'ความรัก', phonetic: 'kwaam-rák', zhTW: '愛', category: 'faith' },
     ],
 };

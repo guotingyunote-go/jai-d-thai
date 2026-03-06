@@ -1,4 +1,5 @@
 import * as Haptics from 'expo-haptics';
+import * as Speech from 'expo-speech';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
@@ -28,6 +29,9 @@ export default function CharacterLabWidget() {
     const startTracing = () => {
         progress.setValue(0);
         emojiOpacity.setValue(1);
+
+        // 發音：唸出字母的名字 (例如：กอ ไก่)
+        Speech.speak(currentLesson.nameThai, { language: 'th-TH', rate: 0.85 });
 
         Animated.sequence([
             // 停頓一下讓使用者先看到 emoji
@@ -139,7 +143,7 @@ export default function CharacterLabWidget() {
                             fill={accentColor}
                         />
                     </Svg>
-                    <Text style={styles.tapToReplay}>點擊重新描寫</Text>
+                    <Text style={styles.tapToReplay}>點擊發音與描寫</Text>
                 </TouchableOpacity>
             </View>
 
@@ -192,19 +196,19 @@ export default function CharacterLabWidget() {
 const styles = StyleSheet.create({
     container: { width: '100%', marginBottom: 32 },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-    title: { fontFamily: 'Prompt_700Bold', fontSize: 18 },
-    tabContainer: { flexDirection: 'row', backgroundColor: '#FFF', borderRadius: 12, padding: 4, marginBottom: 16, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 5, elevation: 1 },
-    tabBtn: { flex: 1, paddingVertical: 10, borderRadius: 8, alignItems: 'center' },
-    tabText: { fontFamily: 'Kanit_600SemiBold', fontSize: 14 },
-    toggleRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-    toggleLabel: { fontFamily: 'Kanit', fontSize: 12, color: '#AAA' },
+    title: { fontFamily: 'Prompt_700Bold', fontSize: 20 },
+    tabContainer: { flexDirection: 'row', backgroundColor: '#FFF', borderRadius: 12, padding: 6, marginBottom: 16, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 5, elevation: 1 },
+    tabBtn: { flex: 1, paddingVertical: 12, borderRadius: 8, alignItems: 'center' },
+    tabText: { fontFamily: 'Kanit_600SemiBold', fontSize: 16 },
+    toggleRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+    toggleLabel: { fontFamily: 'Kanit', fontSize: 14, color: '#AAA' },
     canvasContainer: {
-        height: 200,
+        height: 240,
         backgroundColor: '#FFF',
         borderRadius: 28,
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 20,
+        padding: 24,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.05,
@@ -212,20 +216,20 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     fontPreviewBox: { flex: 1, alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#F0F0F0' },
-    charDisplay: { fontSize: 72 },
-    fontNameHint: { fontFamily: 'Kanit', fontSize: 10, color: '#CCC', marginTop: 8 },
+    charDisplay: { fontSize: 80, letterSpacing: 2 },
+    fontNameHint: { fontFamily: 'Kanit', fontSize: 12, color: '#CCC', marginTop: 12 },
     svgOverlay: { flex: 1.5, alignItems: 'center', justifyContent: 'center', position: 'relative' },
-    bgEmoji: { position: 'absolute', fontSize: 100 },
-    tapToReplay: { fontFamily: 'Kanit', fontSize: 11, color: '#DDD', marginTop: 140 },
-    nextBtn: { marginTop: 12, paddingVertical: 12, borderRadius: 16, alignItems: 'center' },
-    nextText: { fontFamily: 'Kanit_600SemiBold', fontSize: 14 },
+    bgEmoji: { position: 'absolute', fontSize: 110 },
+    tapToReplay: { fontFamily: 'Kanit', fontSize: 13, color: '#DDD', marginTop: 160 },
+    nextBtn: { marginTop: 16, paddingVertical: 14, borderRadius: 16, alignItems: 'center' },
+    nextText: { fontFamily: 'Kanit_600SemiBold', fontSize: 16 },
 
     // Guide Styles
-    guideContainer: { backgroundColor: '#FFF', borderRadius: 20, padding: 16, maxHeight: 400, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2 },
-    guideCard: { backgroundColor: '#F9F9F9', padding: 16, borderRadius: 12, marginBottom: 16 },
-    guideTitle: { fontFamily: 'Prompt_700Bold', fontSize: 15, color: '#333', marginBottom: 8 },
-    guideText: { fontFamily: 'Kanit', fontSize: 14, color: '#555', lineHeight: 22 },
+    guideContainer: { backgroundColor: '#FFF', borderRadius: 20, padding: 20, maxHeight: 500, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2 },
+    guideCard: { backgroundColor: '#F9F9F9', padding: 18, borderRadius: 14, marginBottom: 18 },
+    guideTitle: { fontFamily: 'Prompt_700Bold', fontSize: 17, color: '#333', marginBottom: 10, letterSpacing: 0.5 },
+    guideText: { fontFamily: 'Kanit', fontSize: 16, color: '#555', lineHeight: 28 },
     bold: { fontWeight: '700', color: '#111' },
     highlight: { color: '#000', backgroundColor: '#FFEBB5', fontWeight: '600' },
-    step: { fontWeight: '700', color: '#FFF', backgroundColor: '#999', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, overflow: 'hidden', fontSize: 12 }
+    step: { fontWeight: '700', color: '#FFF', backgroundColor: '#999', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, overflow: 'hidden', fontSize: 13 }
 });
