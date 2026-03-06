@@ -11,7 +11,7 @@ import { useVibe } from '../context/VibeContext';
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function Home() {
-    const { mode, accentColor, userGender } = useVibe() as any;
+    const { mode, accentColor, userGender, femaleParticle } = useVibe() as any;
     const isFaith = mode === 'faith';
 
     const accentLight = isFaith ? '#F0EBF9' : '#E6F5F0';
@@ -55,20 +55,20 @@ export default function Home() {
     // ✨ 禮貌語助詞自動補完：根據模式與性別自動修正顯示內容
     const renderDictionaryCard = (entry: DictionaryEntry) => {
         const isMale = userGender === 'male';
-        const particle = isMale ? 'ครับ' : 'เจ้า';
-        const particlePhonetic = isMale ? 'kráp' : 'jâo';
+        const isKha = femaleParticle === 'khâ';
+        const particle = isMale ? 'ครับ' : (isKha ? 'ค่ะ' : 'เจ้า');
+        const particlePhonetic = isMale ? 'kráp' : (isKha ? 'khâ' : 'jâo');
 
         let displayEntry = { ...entry };
 
-        // [禮貌語助詞自動補完] 規則：
-        // 1. 如果是街市模式 (street) 的內容
-        // 2. 或者是特定需要補完的通用問候語 (common)
-        const genderSensitiveIds = ['cv-1', 'cv-4', 'cv-8', 'cv-10', 'ft-1', 'ft-2', 'ft-17', 'ft-20'];
-        const shouldAddParticle = entry.mode === 'street' || genderSensitiveIds.includes(entry.id);
+        // [禮貌語助詞動態補完] 規則：
+        // 只有資料庫中標記為 type: 'sentence' 的句子才加上語助詞。
+        // 一般單字 (如 廁所) 則不加。
+        const shouldAddParticle = entry.type === 'sentence';
 
         if (shouldAddParticle) {
             // 如果原本沒有包含助詞，則加上去
-            if (!entry.thai.includes('ครับ') && !entry.thai.includes('เจ้า')) {
+            if (!entry.thai.includes('ครับ') && !entry.thai.includes('เจ้า') && !entry.thai.includes('ค่ะ')) {
                 displayEntry.thai = `${entry.thai} ${particle}`;
                 displayEntry.phonetic = `${entry.phonetic} ${particlePhonetic}`;
             }
