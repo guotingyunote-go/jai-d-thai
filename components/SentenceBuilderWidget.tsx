@@ -7,7 +7,7 @@ import { LOGICAL_OBJECTS, PRONOUNS, SentencePart, VERBS } from '../constants/Sen
 import { useVibe } from '../context/VibeContext';
 
 export default function SentenceBuilderWidget() {
-    const { mode, userGender, fontType } = useVibe() as any;
+    const { mode, userGender, fontType, femaleParticle, toggleFemaleParticle } = useVibe() as any;
     const isFaith = mode === 'faith';
     const accentColor = isFaith ? '#7851A9' : '#14B886';
     const thaiFont = fontType === 'headed' ? 'Sarabun_700Bold' : 'Kanit_600SemiBold';
@@ -25,6 +25,7 @@ export default function SentenceBuilderWidget() {
     });
 
     const [pickerType, setPickerType] = useState<'p' | 'v' | 'o' | null>(null);
+    const [showParticleInfo, setShowParticleInfo] = useState(false);
 
     function getFilteredPronouns() {
         return PRONOUNS.filter(p => {
@@ -126,7 +127,7 @@ export default function SentenceBuilderWidget() {
 
     const speak = async () => {
         const showP = shouldShowParticle();
-        const suffix = showP ? (userGender === 'male' ? 'ครับ' : 'เจ้า') : '';
+        const suffix = showP ? (userGender === 'male' ? 'ครับ' : (femaleParticle === 'khâ' ? 'ค่ะ' : 'เจ้า')) : '';
         const fullText = `${selection.p.thai}${selection.v.thai}${selection.o.thai} ${suffix}`;
         playSound(fullText);
     };
@@ -154,20 +155,68 @@ export default function SentenceBuilderWidget() {
 
     const ParticleChip = () => {
         const isMale = userGender === 'male';
-        const thai = isMale ? 'ครับ' : 'เจ้า';
+        const isKha = femaleParticle === 'khâ';
+        const thai = isMale ? 'ครับ' : (isKha ? 'ค่ะ' : 'เจ้า');
+        const phonetic = isMale ? 'kráp' : (isKha ? 'khâ' : 'jâo');
+        const zh = isMale ? '先生/男聲' : (isKha ? '標準女聲' : '泰北女聲');
+
         return (
             <TouchableOpacity
                 activeOpacity={0.7}
-                onPress={() => playSound(thai)}
+                onPress={() => {
+                    if (isMale) playSound(thai);
+                    else toggleFemaleParticle();
+                }}
                 style={[styles.chip, styles.particleChip, { backgroundColor: accentColor + '15', borderColor: accentColor }]}
             >
-                <Text style={[styles.chipLabel, { color: accentColor }]}>語助詞 🔊</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', alignItems: 'center', marginBottom: 4 }}>
+                    <Text style={[styles.chipLabel, { color: accentColor }]}>語助詞</Text>
+                    <TouchableOpacity onPress={(e) => { e.stopPropagation(); setShowParticleInfo(true); }}>
+                        <Text style={{ fontSize: 13, color: accentColor }}>ⓘ</Text>
+                    </TouchableOpacity>
+                </View>
                 <Text style={[styles.chipThai, { color: accentColor, fontFamily: thaiFont }]}>{thai}</Text>
-                <Text style={styles.chipPhonetic}>{isMale ? 'kráp' : 'jâo'}</Text>
-                <Text style={[styles.chipZh, { color: accentColor, opacity: 0.8 }]}>{isMale ? '先生' : '女士'}</Text>
+                <Text style={styles.chipPhonetic}>{phonetic}</Text>
+                <Text style={[styles.chipZh, { color: accentColor, opacity: 0.8 }]}>{zh}</Text>
+                {!isMale && (
+                    <View style={{ marginTop: 4, opacity: 0.6 }}>
+                        <Text style={{ fontSize: 9, color: accentColor }}>⇄ 點擊切換</Text>
+                    </View>
+                )}
+                {isMale && (
+                    <View style={{ marginTop: 4, opacity: 0.3 }}>
+                        <Text style={{ fontSize: 9, color: accentColor }}>🔊 點擊發音</Text>
+                    </View>
+                )}
             </TouchableOpacity>
         );
     };
+
+    const renderParticleInfo = () => (
+        <Modal transparent animationType="fade" visible={showParticleInfo}>
+            <View style={styles.modalOverlay}>
+                <View style={styles.modalContent}>
+                    <View style={styles.modalHeader}>
+                        <Text style={styles.modalTitle}>💡 語助詞使用指南</Text>
+                        <TouchableOpacity onPress={() => setShowParticleInfo(false)}>
+                            <Text style={styles.closeBtn}>✕ 關閉</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <ScrollView style={{ maxHeight: 500 }}>
+                        <Text style={styles.infoText}>
+                            在泰語中，每句話的結尾通常會加上<Text style={styles.bold}>「性別語助詞」</Text>來表示禮貌：{'\n\n'}
+                            👨 <Text style={styles.bold}>男生：ครับ (kráp)</Text>{'\n'}
+                            唯一的禮貌用語。口語中常把 r 吃掉唸成「kap」。{'\n\n'}
+                            👩 <Text style={styles.bold}>女生：分為兩種！</Text>{'\n'}
+                            • <Text style={styles.bold}>ค่ะ (khâ)</Text>：標準泰語。適用於全泰國、曼谷、正式場合。{'\n'}
+                            • <Text style={styles.bold}>เจ้า (Jao)</Text>：泰北方言(蘭納語)。在清邁、清萊市集或部落使用，會讓當地人覺得超級親切、零距離！{'\n\n'}
+                            <Text style={{ color: '#888', fontSize: 13 }}>*(當你選取女聲時，可以直接點擊語助詞按鈕進行模式切換)</Text>
+                        </Text>
+                    </ScrollView>
+                </View>
+            </View>
+        </Modal>
+    );
 
     // 選項渲染
     const renderPicker = () => {
@@ -258,6 +307,7 @@ export default function SentenceBuilderWidget() {
             </TouchableOpacity>
 
             {renderPicker()}
+            {renderParticleInfo()}
         </View>
     );
 }
@@ -289,5 +339,7 @@ const styles = StyleSheet.create({
     closeBtn: { color: '#666', fontSize: 14 },
     pickerItem: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 15, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
     pickerThai: { fontSize: 20, color: '#333' },
-    pickerSub: { fontSize: 12, color: '#888', marginTop: 2 }
+    pickerSub: { fontSize: 12, color: '#888', marginTop: 2 },
+    infoText: { fontFamily: 'Kanit', fontSize: 15, color: '#444', lineHeight: 24 },
+    bold: { fontWeight: 'bold', color: '#111' }
 });

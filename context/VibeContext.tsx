@@ -4,15 +4,18 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 export type VibeMode = 'street' | 'faith';
 export type UserGender = 'male' | 'female';
 export type FontType = 'headed' | 'loopless';
+export type FemaleParticle = 'khâ' | 'jao';
 
 interface VibeContextType {
     mode: VibeMode;
     userGender: UserGender;
     fontType: FontType;
+    femaleParticle: FemaleParticle;
     gracePoints: number;
     toggleMode: () => void;
     toggleGender: () => void;
     toggleFont: () => void;
+    toggleFemaleParticle: () => void;
     addGracePoints: (pts: number) => void;
 }
 
@@ -22,6 +25,7 @@ export function VibeProvider({ children }: { children: ReactNode }) {
     const [mode, setMode] = useState<VibeMode>('street');
     const [userGender, setUserGender] = useState<UserGender>('female');
     const [fontType, setFontType] = useState<FontType>('loopless');
+    const [femaleParticle, setFemaleParticle] = useState<FemaleParticle>('jao');
     const [gracePoints, setGracePoints] = useState(0);
 
     const toggleMode = () => {
@@ -39,14 +43,19 @@ export function VibeProvider({ children }: { children: ReactNode }) {
         setFontType((prev) => (prev === 'headed' ? 'loopless' : 'headed'));
     };
 
+    const toggleFemaleParticle = () => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        setFemaleParticle((prev) => (prev === 'jao' ? 'khâ' : 'jao'));
+    };
+
     const addGracePoints = (pts: number) => {
         setGracePoints((prev) => Math.min(100, prev + pts));
     };
 
     return (
         <VibeContext.Provider value={{
-            mode, userGender, fontType, gracePoints,
-            toggleMode, toggleGender, toggleFont, addGracePoints
+            mode, userGender, fontType, femaleParticle, gracePoints,
+            toggleMode, toggleGender, toggleFont, toggleFemaleParticle, addGracePoints
         }}>
             {children}
         </VibeContext.Provider>
