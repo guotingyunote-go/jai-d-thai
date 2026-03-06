@@ -85,7 +85,7 @@ export default function CharacterLabWidget() {
                 </Text>
                 <Text style={[styles.guideText, { marginTop: 8 }]}>
                     <Text style={styles.bold}>元音 (32個)</Text>：寫在輔音的上下左右，分長短音。{'\n'}
-                    <Text style={styles.bold}>聲調 (5個調)</Text>：只有 4 個符號 (่, ้, ๊, ๋)；中平調沒有符號。
+                    <Text style={styles.bold}>聲調 (5個調)</Text>：只有 4 個符號（ ่　 ้　 ๊　 ๋ ）；中平調沒有符號。
                 </Text>
             </View>
 
@@ -131,14 +131,15 @@ export default function CharacterLabWidget() {
                             d={currentLesson.svgPath}
                             fill="none"
                             stroke="#F0F0F0"
-                            strokeWidth="8"
+                            strokeWidth="10"
                             strokeLinecap="round"
+                            opacity={0.8}
                         />
                         <AnimatedPath
                             d={currentLesson.svgPath}
                             fill="none"
                             stroke={accentColor}
-                            strokeWidth="8"
+                            strokeWidth="10"
                             strokeLinecap="round"
                             strokeDasharray={currentLesson.pathLength}
                             strokeDashoffset={progress.interpolate({
