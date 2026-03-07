@@ -23,7 +23,16 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "pwa": {
+        "name": "Jai-D Thai",
+        "shortName": "Jai-D",
+        "icon": "./assets/images/icon.png",
+        "manifest": {
+          "background_color": "#ffffff",
+          "theme_color": "#14B886"
+        }
+      }
     },
     "plugins": [
       "expo-router",
