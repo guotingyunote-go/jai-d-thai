@@ -12,7 +12,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 20, cy: 90 },
     street: { thai: 'ไก่', phonetic: 'gài', zhTW: '雞', note: 'กอ ไก่ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'กางเขน', phonetic: 'gaang-khěen', zhTW: '十字架', note: '耶穌為我們釘在上面' }
   },
   {
     id: 'char-ข',
@@ -25,7 +25,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 40, cy: 25 },
     street: { thai: 'ไข่', phonetic: 'khài', zhTW: '蛋', note: 'ขอ ไข่ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ข่าวประเสริฐ', phonetic: 'khàao bprà-sə̀ət', zhTW: '福音', note: '救主降生的好消息' }
   },
   {
     id: 'char-ฃ',
@@ -38,7 +38,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 40, cy: 25 },
     street: { thai: 'ขวด', phonetic: 'khùat', zhTW: '瓶子', note: 'ขอ ขวด 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ขงจื๊อ', phonetic: 'khǒng-jʉ́ʉ', zhTW: '教導', note: '指崇高的教義(古用法)' }
   },
   {
     id: 'char-ค',
@@ -51,7 +51,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 45, cy: 35 },
     street: { thai: 'ควาย', phonetic: 'kwaai', zhTW: '水牛', note: 'คอ ควาย 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'คริสตจักร', phonetic: 'khrít-dtà-jàk', zhTW: '教會', note: '上帝的家' }
   },
   {
     id: 'char-ฅ',
@@ -64,7 +64,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 45, cy: 35 },
     street: { thai: 'คน', phonetic: 'khon', zhTW: '人', note: 'ฅอ คน 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'คนต้นเรือน', phonetic: 'khon dtôn rʉan', zhTW: '管家', note: '忠心的管家' }
   },
   {
     id: 'char-ฆ',
@@ -77,7 +77,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 450,
     startPoint: { cx: 25, cy: 30 },
     street: { thai: 'ระฆัง', phonetic: 'rá-khang', zhTW: '大鐘', note: 'ฆอ ระฆัง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'โฆษณา', phonetic: 'khôot-sa-naa', zhTW: '傳揚', note: '傳揚神的作為' }
   },
   {
     id: 'char-ง',
@@ -90,7 +90,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 180,
     startPoint: { cx: 60, cy: 30 },
     street: { thai: 'งู', phonetic: 'nguu', zhTW: '蛇', note: 'งอ งู 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'งานรับใช้', phonetic: 'ngaan ráp-chái', zhTW: '服事', note: '甘心做主工' }
   },
   {
     id: 'char-จ',
@@ -103,7 +103,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 250,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'จาน', phonetic: 'jaan', zhTW: '盤子', note: 'จอ จาน 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'จิตวิญญาณ', phonetic: 'jìt win-yaan', zhTW: '心靈', note: '在心靈裡敬拜' }
   },
   {
     id: 'char-ฉ',
@@ -116,7 +116,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 350,
     startPoint: { cx: 40, cy: 40 },
     street: { thai: 'ฉิ่ง', phonetic: 'chìng', zhTW: '鐃鈸', note: 'ฉอ ฉิ่ง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ฉันมิตร', phonetic: 'chǎn-mít', zhTW: '彼此相愛', note: '弟兄情誼' }
   },
   {
     id: 'char-ช',
@@ -129,7 +129,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 30, cy: 35 },
     street: { thai: 'ช้าง', phonetic: 'cháang', zhTW: '大象', note: 'ชอ ช้าง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ชัยชนะ', phonetic: 'chai-chá-ná', zhTW: '得勝', note: '靠主得勝' }
   },
   {
     id: 'char-ซ',
@@ -142,7 +142,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 30, cy: 35 },
     street: { thai: 'โซ่', phonetic: 'sôo', zhTW: '鐵鍊', note: 'ซอ โซ่ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ซื่อสัตย์', phonetic: 'sʉ̂ʉ-sàt', zhTW: '忠心', note: '忠心良善的僕人' }
   },
   {
     id: 'char-ฌ',
@@ -151,11 +151,11 @@ export const LESSONS: Lesson[] = [
     nameThai: 'ฌอ เฌอ',
     letterClass: '低聲調類',
     emoji: '🌳',
-    svgPath: 'M 35,45 A 6,6 0 1,1 47,45 A 6,6 0 1,1 35,45 M 41,51 L 41,85 M 41,51 Q 41,20 65,20 L 65,65 Q 65,85 45,85 A 8,8 0 1,1 45,69 L 85,69 L 85,90',
+    svgPath: 'M 35,45 A 6,6 0 1,1 47,45 A 6,6 0 1,1 35,45 M 41,51 L 41,85 M 41,51 Q 41,20 65,20 L 65,55 Q 65,85 45,85 A 8,8 0 1,1 45,69 L 85,69 L 85,90',
     pathLength: 350,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'เฌอ', phonetic: 'chəə', zhTW: '樹木', note: 'ฌอ เฌอ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'เชอรูบิม', phonetic: 'chəə-ruu-bim', zhTW: '智使', note: '基路冰(天使)' }
   },
   {
     id: 'char-ญ',
@@ -168,7 +168,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 250,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'หญิง', phonetic: 'yǐng', zhTW: '女人', note: 'ญอ หญิง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ญัตติ', phonetic: 'yát-dtì', zhTW: '議案', note: '在教會議事中常用' }
   },
   {
     id: 'char-ฎ',
@@ -181,7 +181,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'ชฎา', phonetic: 'chá-daa', zhTW: '頭冠', note: 'ฎอ ชฎา 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ฎีกา', phonetic: 'dii-gaa', zhTW: '奏章', note: '向神發出的請願(古)' }
   },
   {
     id: 'char-ฏ',
@@ -194,7 +194,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'ปฏัก', phonetic: 'bpà-dtàk', zhTW: '刺棒', note: 'ฏอ ปฏัก 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ปฏัก', phonetic: 'bpà-dtàk', zhTW: '刺棒', note: '聖經中「你用腳踢刺是難的」' }
   },
   {
     id: 'char-ฐ',
@@ -207,7 +207,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 40, cy: 40 },
     street: { thai: 'ฐาน', phonetic: 'thǎan', zhTW: '基座', note: 'ฐอ ฐาน 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'รากฐาน', phonetic: 'râak-thǎan', zhTW: '根基', note: '建立在攀石之上' }
   },
   {
     id: 'char-ฑ',
@@ -220,7 +220,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 30, cy: 45 },
     street: { thai: 'มณโฑ', phonetic: 'mon-thoo', zhTW: '曼陀(神話人物)', note: 'ฑอ มณโฑ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'มณโฑ', phonetic: 'mon-thoo', zhTW: '曼陀', note: '指古時聖地或人物' }
   },
   {
     id: 'char-ฒ',
@@ -233,7 +233,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 250,
     startPoint: { cx: 30, cy: 45 },
     street: { thai: 'ผู้เฒ่า', phonetic: 'phûu-thâo', zhTW: '老人', note: 'ฒอ ผู้เฒ่า 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ผู้เฒ่าผู้แก่', phonetic: 'phûu-thâo phûu-gàe', zhTW: '長老', note: '教會中的長者' }
   },
   {
     id: 'char-ณ',
@@ -246,7 +246,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 30, cy: 45 },
     street: { thai: 'เณร', phonetic: 'neen', zhTW: '沙彌', note: 'ณอ เณร 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'กษัตริย์', phonetic: 'gà-sàt', zhTW: '君王', note: '萬王之王(含此字母)' }
   },
   {
     id: 'char-ด',
@@ -259,7 +259,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 40, cy: 40 },
     street: { thai: 'เด็ก', phonetic: 'dèk', zhTW: '小孩', note: 'ดอ เด็ก 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ดำเนิน', phonetic: 'dam-nəən', zhTW: '行在', note: '行在神的話語中' }
   },
   {
     id: 'char-ต',
@@ -272,7 +272,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 40, cy: 40 },
     street: { thai: 'เต่า', phonetic: 'dtào', zhTW: '烏龜', note: 'ตอ เต่า 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ตรีเอกภาพ', phonetic: 'dtrii-èek-gà-phâap', zhTW: '三位一體', note: '聖父聖子聖靈' }
   },
   {
     id: 'char-ถ',
@@ -285,7 +285,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'ถุง', phonetic: 'thǔng', zhTW: '袋子', note: 'ถอ ถุง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ถวาย', phonetic: 'thà-waai', zhTW: '奉獻', note: '獻上為至聖的祭' }
   },
   {
     id: 'char-ท',
@@ -298,7 +298,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 220,
     startPoint: { cx: 30, cy: 35 },
     street: { thai: 'ทหาร', phonetic: 'thá-hǎan', zhTW: '軍人', note: 'ทอ ทหาร 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ทูตสวรรค์', phonetic: 'thûut sa-wan', zhTW: '天使', note: '傳達神諭的使者' }
   },
   {
     id: 'char-ธ',
@@ -311,7 +311,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 25, cy: 90 },
     street: { thai: 'ธง', phonetic: 'thong', zhTW: '旗幟', note: 'ธอ ธง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ธรรมิกชน', phonetic: 'tham-mí-gà-chon', zhTW: '聖徒', note: '被分別為聖的人' }
   },
   {
     id: 'char-น',
@@ -324,7 +324,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 250,
     startPoint: { cx: 35, cy: 35 },
     street: { thai: 'หนู', phonetic: 'nǔu', zhTW: '老鼠', note: 'นอ หนู 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'นมัสการ', phonetic: 'na-mát-sa-gaan', zhTW: '敬拜', note: '歸榮耀給神' }
   },
   {
     id: 'char-บ',
@@ -337,7 +337,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 30, cy: 25 },
     street: { thai: 'ใบไม้', phonetic: 'bai-mái', zhTW: '樹葉', note: 'บอ ใบไม้ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'บัพติศมา', phonetic: 'báp-dtìt-sa-maa', zhTW: '洗禮', note: '受洗歸入主名' }
   },
   {
     id: 'char-ป',
@@ -350,7 +350,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 30, cy: 25 },
     street: { thai: 'ปลา', phonetic: 'bplaa', zhTW: '魚', note: 'ปอ ปลา 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ปัญญา', phonetic: 'bpan-yaa', zhTW: '智慧', note: '敬畏耶和華是智慧的開端' }
   },
   {
     id: 'char-ผ',
@@ -363,7 +363,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'ผึ้ง', phonetic: 'phʉ̂ng', zhTW: '蜜蜂', note: 'ผอ ผึ้ง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ผู้เลี้ยง', phonetic: 'phûu-líiang', zhTW: '牧者', note: '耶穌是好牧人' }
   },
   {
     id: 'char-ฝ',
@@ -376,7 +376,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 35, cy: 45 },
     street: { thai: 'ฝา', phonetic: 'fǎa', zhTW: '蓋子', note: 'ฝอ ฝา 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'เฝ้าเดี่ยว', phonetic: 'fâo dìiao', zhTW: '靈修', note: '每日與主親近' }
   },
   {
     id: 'char-พ',
@@ -389,7 +389,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 25, cy: 45 },
     street: { thai: 'พาน', phonetic: 'phaan', zhTW: '托盤', note: 'พอ พาน 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'พระวิญญาณ', phonetic: 'phrá win-yaan', zhTW: '聖靈', note: '保惠師與我們同在' }
   },
   {
     id: 'char-ฟ',
@@ -402,7 +402,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 25, cy: 45 },
     street: { thai: 'ฟัน', phonetic: 'fan', zhTW: '牙齒', note: 'ฟอ ฟัน 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ฟื้นฟู', phonetic: 'fʉ́ʉn fuu', zhTW: '復興', note: '靈命的更新復興' }
   },
   {
     id: 'char-ภ',
@@ -415,7 +415,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 25, cy: 45 },
     street: { thai: 'สำเภา', phonetic: 'sǎm-phao', zhTW: '帆船', note: 'ภอ สำเภา 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ภารกิจ', phonetic: 'pháa-rá-gìt', zhTW: '使命', note: '福音的大使命' }
   },
   {
     id: 'char-ม',
@@ -428,7 +428,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 280,
     startPoint: { cx: 35, cy: 35 },
     street: { thai: 'ม้า', phonetic: 'máa', zhTW: '馬', note: 'มอ ม้า 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'เมตตา', phonetic: 'mêet-dtaa', zhTW: '憐憫', note: '神的慈愛與憐憫' }
   },
   {
     id: 'char-ย',
@@ -441,7 +441,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 25, cy: 40 },
     street: { thai: 'ยักษ์', phonetic: 'yák', zhTW: '夜叉', note: 'ยอ ยักษ์ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ยึดมั่น', phonetic: 'yʉ́t mân', zhTW: '持守', note: '持守真理與誠實' }
   },
   {
     id: 'char-ร',
@@ -454,7 +454,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 220,
     startPoint: { cx: 45, cy: 90 },
     street: { thai: 'เรือ', phonetic: 'rʉa', zhTW: '船', note: 'รอ เรือ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'รัก', phonetic: 'rák', zhTW: '愛', note: '愛是恆久忍耐' }
   },
   {
     id: 'char-ล',
@@ -467,7 +467,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 220,
     startPoint: { cx: 35, cy: 75 },
     street: { thai: 'ลิง', phonetic: 'ling', zhTW: '猴子', note: 'ลอ ลิง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ลูกแกะ', phonetic: 'lûuk gàe', zhTW: '小羊', note: '主的羊聽主聲音' }
   },
   {
     id: 'char-ว',
@@ -480,7 +480,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 150,
     startPoint: { cx: 45, cy: 75 },
     street: { thai: 'แหวน', phonetic: 'wǎen', zhTW: '戒指', note: 'วอ แหวน 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'วางมือ', phonetic: 'waang mʉʉ', zhTW: '按手', note: '使徒的按手禱告' }
   },
   {
     id: 'char-ศ',
@@ -493,7 +493,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 40, cy: 40 },
     street: { thai: 'ศาลา', phonetic: 'sǎa-laa', zhTW: '涼亭', note: 'ศอ ศาลา 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ศิษย์', phonetic: 'sìt', zhTW: '門徒', note: '主的門徒' }
   },
   {
     id: 'char-ษ',
@@ -506,7 +506,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 30, cy: 25 },
     street: { thai: 'ฤๅษี', phonetic: 'rʉʉ-sǐi', zhTW: '隱士', note: 'ษอ ฤๅษี 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'พิษ', phonetic: 'phít', zhTW: '毒', note: '聖經中提到「蛇的毒氣」(含此字母)' }
   },
   {
     id: 'char-ส',
@@ -519,7 +519,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 260,
     startPoint: { cx: 35, cy: 75 },
     street: { thai: 'เสือ', phonetic: 'sʉ̌a', zhTW: '老虎', note: 'สอ เสือ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'สรรเสริญ', phonetic: 'sǎn-sə̌ən', zhTW: '讚美', note: '全心讚美神' }
   },
   {
     id: 'char-ห',
@@ -532,7 +532,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 30, cy: 35 },
     street: { thai: 'หีบ', phonetic: 'hǐip', zhTW: '箱子', note: 'หอ หีบ 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ความหวัง', phonetic: 'kwaam wǎng', zhTW: '盼望', note: '基督是我盼望' }
   },
   {
     id: 'char-ฬ',
@@ -545,7 +545,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 350,
     startPoint: { cx: 30, cy: 35 },
     street: { thai: 'จุฬา', phonetic: 'jù-laa', zhTW: '風箏', note: 'ฬอ จุฬา 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'ฬอ', phonetic: 'laa', zhTW: '冠冕', note: '天上的賞賜(音似)' }
   },
   {
     id: 'char-อ',
@@ -558,7 +558,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 300,
     startPoint: { cx: 45, cy: 45 },
     street: { thai: 'อ่าง', phonetic: 'àang', zhTW: '盆子', note: 'ออ อ่าง 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'อธิษฐาน', phonetic: 'at-ti-thǎan', zhTW: '禱告', note: '與神談心' }
   },
   {
     id: 'char-ฮ',
@@ -571,6 +571,6 @@ export const LESSONS: Lesson[] = [
     pathLength: 350,
     startPoint: { cx: 45, cy: 45 },
     street: { thai: 'นกฮูก', phonetic: 'nók-hûuk', zhTW: '貓頭鷹', note: 'ฮอ นกฮูก 的由來' },
-    faith: { thai: 'พระเจ้า', phonetic: 'phrá jâo', zhTW: '上帝', note: '泰音練習' }
+    faith: { thai: 'อัลเลลูยา', phonetic: 'al-lee-luu-yaa', zhTW: '阿利路亞', note: '讚美耶和華' }
   },
 ];

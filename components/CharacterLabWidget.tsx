@@ -11,12 +11,15 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 export default function CharacterLabWidget() {
     const { mode, fontType } = useVibe() as any;
     const [index, setIndex] = useState(0);
+    const [isLoopless, setIsLoopless] = useState(false);
     const [activeTab, setActiveTab] = useState<'card' | 'guide'>('card');
 
     const isFaith = mode === 'faith';
     const accentColor = isFaith ? '#7851A9' : '#14B886';
     const currentLesson = LESSONS[index % LESSONS.length];
-    const thaiFont = fontType === 'headed' ? 'Sarabun_700Bold' : 'Kanit_600SemiBold';
+    
+    // 根據 Toggle 決定主顯示字體
+    const thaiFont = isLoopless ? 'Kanit_600SemiBold' : 'Sarabun_700Bold';
 
     const playSound = async (text: string) => {
         try {
@@ -45,20 +48,43 @@ export default function CharacterLabWidget() {
 
     const renderGuide = () => (
         <ScrollView style={styles.guideContainer} showsVerticalScrollIndicator={false}>
+            {/* 恢復原有的三個說明區塊 */}
             <View style={[styles.guideCard, { borderLeftColor: accentColor, borderLeftWidth: 4 }]}>
-                <Text style={styles.guideTitle}>✍️ 泰文書寫核心規則</Text>
+                <Text style={styles.guideTitle}>1. 泰文字母系統組成 🧩</Text>
                 <Text style={styles.guideText}>
-                    • <Text style={styles.bold}>從「圓圈」開始</Text>：絕大多數泰文字母都有一個小圓圈（頭），書寫時必須先從圓圈下筆，順時針或逆時針繞行。{'\n'}
-                    • <Text style={styles.bold}>一筆畫完成</Text>：泰文字母設計上通常是一筆到底，中間不抬筆。{'\n'}
-                    • <Text style={styles.bold}>無頭字母例外</Text>：少數字母（如 ก 和 ธ）沒有圓圈，則從左下角或底部開始書寫。
+                    <Text style={styles.bold}>輔音 (44個)</Text>：決定聲調走向的關鍵。{'\n'}
+                    • <Text style={styles.highlight}>中輔音 (9個)</Text>：聲調最規整，如 ก, จ, ด, ต, บ, ป, อ。{'\n'}
+                    • <Text style={styles.highlight}>高輔音 (11個)</Text>：多為送氣音，如 ข, ฉ, ฐ, ถ, ผ, ฝ, ศ, ษ, ส, ห。{'\n'}
+                    • <Text style={styles.highlight}>低輔音 (24個)</Text>：包含所有鼻音與半元音。
+                </Text>
+                <Text style={[styles.guideText, { marginTop: 8 }]}>
+                    <Text style={styles.bold}>元音 (32個)</Text>：寫在輔音的上下左右，分長短音。{'\n'}
+                    <Text style={styles.bold}>聲調 (5個調)</Text>：只有 4 個符號（ ่　 ้　 ๊　 ๋ ）；中平調沒有符號。
                 </Text>
             </View>
 
             <View style={[styles.guideCard, { borderLeftColor: accentColor, borderLeftWidth: 4 }]}>
-                <Text style={styles.guideTitle}>🧩 字母組合邏輯</Text>
+                <Text style={styles.guideTitle}>2. 聲調與拼讀步驟 🪜</Text>
                 <Text style={styles.guideText}>
-                    泰文字母不是由左至右單純排列，而是以<Text style={styles.highlight}>輔音</Text>為核心，元音（母音）會出現在輔音的<Text style={styles.bold}>上下左右</Text>。{'\n'}
-                    書寫順序通常是：前加元音 → 輔音 → 上/下元音 → 尾音。
+                    <Text style={styles.step}>第一步</Text>：記住輔音類別 (中/高/低)，這決定了初始聲調。{'\n'}
+                    <Text style={styles.step}>第二步</Text>：辨識元音長短與尾音性質。{'\n'}
+                    <Text style={styles.step}>第三步</Text>：綜合判定。例如：「狗」หมา = 高輔音 ห 前導 + 低輔音 ม + 長元音 า → 第五聲。
+                </Text>
+            </View>
+
+            <View style={[styles.guideCard, { borderLeftColor: accentColor, borderLeftWidth: 4 }]}>
+                <Text style={styles.guideTitle}>3. 書寫與發音的落差 ⚠️</Text>
+                <Text style={styles.guideText}>
+                    <Text style={styles.bold}>省略子音</Text>：如 ครับ (Krap)，口語常省略 r 音唸成 Kap。{'\n'}
+                    <Text style={styles.bold}>前導字元</Text>：前導 <Text style={styles.highlight}>ห</Text> 出現在低輔音前方時不發音，但會改變該音節的聲調規則！
+                </Text>
+            </View>
+
+            <View style={[styles.guideCard, { borderLeftColor: accentColor, borderLeftWidth: 4 }]}>
+                <Text style={styles.guideTitle}>✍️ 書寫核心規則 (新增)</Text>
+                <Text style={styles.guideText}>
+                    • <Text style={styles.bold}>圓圈下筆</Text>：泰文通常由小圓圈（頭）開始，一筆完成。{'\n'}
+                    • <Text style={styles.bold}>無頭例外</Text>：如 ก 或 ธ 則從底部起筆。
                 </Text>
             </View>
         </ScrollView>
@@ -67,8 +93,31 @@ export default function CharacterLabWidget() {
     const renderCard = () => (
         <View style={styles.cardWrapper}>
             <View style={styles.mainCard}>
-                {/* 頂部字母展示區 */}
+                {/* 頂部字母展示區：包含左側字體預覽說明 */}
                 <View style={[styles.charSection, { backgroundColor: accentColor + '05' }]}>
+                    <View style={styles.fontPreviewSide}>
+                        <Text style={styles.sectionLabel}>字體樣式</Text>
+                        <View style={styles.previewBox}>
+                            <Text style={[styles.previewChar, { fontFamily: 'Sarabun_700Bold' }]}>{currentLesson.letter}</Text>
+                            <Text style={styles.previewLabel}>Headed</Text>
+                        </View>
+                        <View style={styles.previewBox}>
+                            <Text style={[styles.previewChar, { fontFamily: 'Kanit_600SemiBold' }]}>{currentLesson.letter}</Text>
+                            <Text style={styles.previewLabel}>Loopless</Text>
+                        </View>
+                        
+                        <View style={styles.toggleInCard}>
+                            <Switch
+                                value={isLoopless}
+                                onValueChange={setIsLoopless}
+                                trackColor={{ false: '#DDD', true: accentColor + '60' }}
+                                thumbColor={isLoopless ? accentColor : '#FFF'}
+                                style={{ transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }] }}
+                            />
+                            <Text style={styles.toggleHint}>{isLoopless ? '切換有頭' : '切換無頭'}</Text>
+                        </View>
+                    </View>
+
                     <TouchableOpacity onPress={() => playSound(currentLesson.nameThai)} style={styles.letterBox}>
                         <Text style={[styles.bigChar, { color: accentColor, fontFamily: thaiFont }]}>
                             {currentLesson.letter}
@@ -76,42 +125,13 @@ export default function CharacterLabWidget() {
                         <Text style={styles.pronounceHint}>🔊 {currentLesson.letterLabel}</Text>
                     </TouchableOpacity>
 
-                    {/* 書寫方向示意圖 (SVG) */}
                     <View style={styles.directionSection}>
-                        <Text style={styles.sectionLabel}>書寫方向指南 🧭</Text>
+                        <Text style={styles.sectionLabel}>筆順指引</Text>
                         <View style={styles.svgContainer}>
                             <Svg height="100" width="100" viewBox="0 0 100 100">
-                                {/* 底色路徑 */}
-                                <Path
-                                    d={currentLesson.svgPath}
-                                    fill="none"
-                                    stroke="#EEE"
-                                    strokeWidth="8"
-                                    strokeLinecap="round"
-                                />
-                                {/* 主要路徑 */}
-                                <Path
-                                    d={currentLesson.svgPath}
-                                    fill="none"
-                                    stroke={accentColor}
-                                    strokeWidth="6"
-                                    strokeLinecap="round"
-                                    opacity={0.8}
-                                />
-                                {/* 起點標示 */}
-                                <Circle
-                                    cx={currentLesson.startPoint.cx}
-                                    cy={currentLesson.startPoint.cy}
-                                    r="5"
-                                    fill="#FF6B6B"
-                                />
-                                <Circle
-                                    cx={currentLesson.startPoint.cx}
-                                    cy={currentLesson.startPoint.cy}
-                                    r="8"
-                                    fill="#FF6B6B"
-                                    opacity={0.3}
-                                />
+                                <Path d={currentLesson.svgPath} fill="none" stroke="#EEE" strokeWidth="8" strokeLinecap="round" />
+                                <Path d={currentLesson.svgPath} fill="none" stroke={accentColor} strokeWidth="6" strokeLinecap="round" opacity={0.8} />
+                                <Circle cx={currentLesson.startPoint.cx} cy={currentLesson.startPoint.cy} r="5" fill="#FF6B6B" />
                             </Svg>
                             <Text style={styles.startHint}>🔴 為起點</Text>
                         </View>
@@ -123,14 +143,14 @@ export default function CharacterLabWidget() {
                     <Text style={[styles.sectionLabel, { marginBottom: 12 }]}>單字範例應用 💡</Text>
                     <View style={styles.exampleRow}>
                         <View style={[styles.exampleItem, { borderLeftColor: '#14B886' }]}>
-                            <Text style={styles.exampleTag}>生活模式</Text>
-                            <Text style={styles.exampleThai}>{currentLesson.street.thai}</Text>
+                            <Text style={styles.exampleTag}>生活模式 (Street)</Text>
+                            <Text style={[styles.exampleThai, { color: '#14B886' }]}>{currentLesson.street.thai}</Text>
                             <Text style={styles.examplePhonetic}>{currentLesson.street.phonetic}</Text>
                             <Text style={styles.exampleZh}>{currentLesson.street.zhTW}</Text>
                         </View>
                         <View style={[styles.exampleItem, { borderLeftColor: '#7851A9' }]}>
-                            <Text style={styles.exampleTag}>信仰模式</Text>
-                            <Text style={styles.exampleThai}>{currentLesson.faith.thai}</Text>
+                            <Text style={styles.exampleTag}>信仰模式 (Faith)</Text>
+                            <Text style={[styles.exampleThai, { color: '#7851A9' }]}>{currentLesson.faith.thai}</Text>
                             <Text style={styles.examplePhonetic}>{currentLesson.faith.phonetic}</Text>
                             <Text style={styles.exampleZh}>{currentLesson.faith.zhTW}</Text>
                         </View>
@@ -144,9 +164,7 @@ export default function CharacterLabWidget() {
                     <Text style={styles.navBtnText}>上一個</Text>
                 </TouchableOpacity>
                 <View style={styles.progressCounter}>
-                    <Text style={[styles.progressText, { color: accentColor }]}>
-                        {index + 1} / {LESSONS.length}
-                    </Text>
+                    <Text style={[styles.progressText, { color: accentColor }]}>{index + 1} / {LESSONS.length}</Text>
                     <Text style={styles.classLabel}>{currentLesson.letterClass}</Text>
                 </View>
                 <TouchableOpacity style={[styles.navBtn, { backgroundColor: accentColor }]} onPress={nextChar}>
@@ -160,7 +178,7 @@ export default function CharacterLabWidget() {
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={[styles.title, { color: accentColor }]}>Character Lab 🖊️</Text>
-                <Text style={styles.headerSubtitle}>掌握泰語 44 個輔音根基</Text>
+                <Text style={styles.headerSubtitle}>泰語輔音與書寫核心</Text>
             </View>
 
             <View style={styles.tabContainer}>
@@ -168,13 +186,13 @@ export default function CharacterLabWidget() {
                     style={[styles.tabBtn, activeTab === 'card' ? { backgroundColor: accentColor } : {}]}
                     onPress={() => setActiveTab('card')}
                 >
-                    <Text style={[styles.tabText, activeTab === 'card' ? { color: '#FFF' } : { color: '#AAA' }]}>單字卡</Text>
+                    <Text style={[styles.tabText, activeTab === 'card' ? { color: '#FFF' } : { color: '#AAA' }]}>字母卡</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.tabBtn, activeTab === 'guide' ? { backgroundColor: accentColor } : {}]}
                     onPress={() => setActiveTab('guide')}
                 >
-                    <Text style={[styles.tabText, activeTab === 'guide' ? { color: '#FFF' } : { color: '#AAA' }]}>書寫規則</Text>
+                    <Text style={[styles.tabText, activeTab === 'guide' ? { color: '#FFF' } : { color: '#AAA' }]}>讀寫指南</Text>
                 </TouchableOpacity>
             </View>
 
@@ -186,78 +204,54 @@ export default function CharacterLabWidget() {
 const styles = StyleSheet.create({
     container: { width: '100%', marginBottom: 32 },
     header: { marginBottom: 16 },
-    title: { fontFamily: 'Prompt_700Bold', fontSize: 24, marginBottom: 4 },
+    title: { fontFamily: 'Prompt_700Bold', fontSize: 24 },
     headerSubtitle: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA' },
-    tabContainer: { 
-        flexDirection: 'row', 
-        backgroundColor: '#F5F5F7', 
-        borderRadius: 16, 
-        padding: 5, 
-        marginBottom: 20 
-    },
+    tabContainer: { flexDirection: 'row', backgroundColor: '#F5F5F7', borderRadius: 16, padding: 5, marginBottom: 20 },
     tabBtn: { flex: 1, paddingVertical: 10, borderRadius: 12, alignItems: 'center' },
     tabText: { fontFamily: 'Kanit_600SemiBold', fontSize: 15 },
     
-    // Card Styles
     cardWrapper: { width: '100%' },
-    mainCard: { 
-        backgroundColor: '#FFF', 
-        borderRadius: 24, 
-        overflow: 'hidden',
-        shadowColor: '#000', 
-        shadowOffset: { width: 0, height: 10 }, 
-        shadowOpacity: 0.08, 
-        shadowRadius: 20, 
-        elevation: 5 
-    },
-    charSection: { 
-        flexDirection: 'row', 
-        padding: 24, 
-        alignItems: 'center', 
-        justifyContent: 'space-between',
-        borderBottomWidth: 1,
-        borderBottomColor: '#F0F0F0'
-    },
+    mainCard: { backgroundColor: '#FFF', borderRadius: 24, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.08, shadowRadius: 20, elevation: 5 },
+    
+    charSection: { flexDirection: 'row', padding: 20, alignItems: 'center', borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
+    
+    // 左側說明區 (恢復並優化)
+    fontPreviewSide: { width: 80, alignItems: 'center', borderRightWidth: 1, borderRightColor: '#F0F0F0', marginRight: 15 },
+    previewBox: { alignItems: 'center', marginBottom: 12 },
+    previewChar: { fontSize: 24, color: '#999' },
+    previewLabel: { fontSize: 9, color: '#CCC', fontFamily: 'Kanit' },
+    toggleInCard: { alignItems: 'center', marginTop: 5 },
+    toggleHint: { fontSize: 9, color: '#AAA', fontFamily: 'Kanit', marginTop: -4 },
+
     letterBox: { flex: 1, alignItems: 'center' },
-    bigChar: { fontSize: 80, marginBottom: 8 },
-    pronounceHint: { fontFamily: 'Kanit', fontSize: 16, color: '#666' },
+    bigChar: { fontSize: 80, marginBottom: 4 },
+    pronounceHint: { fontFamily: 'Kanit', fontSize: 14, color: '#666' },
     
-    directionSection: { flex: 1, alignItems: 'center', borderLeftWidth: 1, borderLeftColor: '#F0F0F0', paddingLeft: 20 },
-    sectionLabel: { fontFamily: 'Prompt_700Bold', fontSize: 13, color: '#BBB', textTransform: 'uppercase', letterSpacing: 1 },
-    svgContainer: { marginTop: 15, alignItems: 'center' },
-    startHint: { fontFamily: 'Kanit', fontSize: 11, color: '#FF6B6B', marginTop: 8, fontWeight: '700' },
+    directionSection: { width: 100, alignItems: 'center', borderLeftWidth: 1, borderLeftColor: '#F0F0F0', paddingLeft: 10 },
+    sectionLabel: { fontFamily: 'Prompt_700Bold', fontSize: 10, color: '#BBB', textTransform: 'uppercase', marginBottom: 5 },
+    svgContainer: { alignItems: 'center' },
+    startHint: { fontFamily: 'Kanit', fontSize: 10, color: '#FF6B6B', marginTop: 5, fontWeight: '700' },
     
-    examplesSection: { padding: 24 },
-    exampleRow: { flexDirection: 'row', gap: 12 },
+    examplesSection: { padding: 20 },
+    exampleRow: { flexDirection: 'row', gap: 10 },
     exampleItem: { flex: 1, padding: 12, backgroundColor: '#F9F9F9', borderRadius: 16, borderLeftWidth: 4 },
     exampleTag: { fontFamily: 'Kanit', fontSize: 10, color: '#AAA', marginBottom: 4 },
-    exampleThai: { fontFamily: 'Prompt_700Bold', fontSize: 18, color: '#333' },
+    exampleThai: { fontFamily: 'Sarabun_700Bold', fontSize: 18, marginBottom: 2 },
     examplePhonetic: { fontFamily: 'Kanit', fontSize: 12, color: '#888' },
-    exampleZh: { fontFamily: 'Prompt_500Medium', fontSize: 13, color: '#555', marginTop: 2 },
+    exampleZh: { fontFamily: 'Prompt_500Medium', fontSize: 13, color: '#555' },
     
-    controls: { 
-        flexDirection: 'row', 
-        alignItems: 'center', 
-        justifyContent: 'space-between', 
-        marginTop: 20,
-        paddingHorizontal: 4
-    },
-    navBtn: { 
-        paddingHorizontal: 20, 
-        paddingVertical: 12, 
-        backgroundColor: '#F0F0F0', 
-        borderRadius: 14 
-    },
+    controls: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 20, paddingHorizontal: 4 },
+    navBtn: { paddingHorizontal: 20, paddingVertical: 12, backgroundColor: '#F0F0F0', borderRadius: 14 },
     navBtnText: { fontFamily: 'Kanit_600SemiBold', fontSize: 15, color: '#555' },
     progressCounter: { alignItems: 'center' },
     progressText: { fontFamily: 'Prompt_700Bold', fontSize: 18 },
     classLabel: { fontFamily: 'Kanit', fontSize: 12, color: '#BBB' },
 
-    // Guide Styles
     guideContainer: { backgroundColor: '#FFF', borderRadius: 24, padding: 20, maxHeight: 500 },
     guideCard: { backgroundColor: '#F9F9FB', padding: 20, borderRadius: 18, marginBottom: 16 },
     guideTitle: { fontFamily: 'Prompt_700Bold', fontSize: 18, color: '#333', marginBottom: 12 },
     guideText: { fontFamily: 'Kanit', fontSize: 15, color: '#666', lineHeight: 26 },
     bold: { fontWeight: '700', color: '#111' },
-    highlight: { color: '#000', backgroundColor: '#FFEBB5', paddingHorizontal: 4, fontWeight: '600' }
+    highlight: { color: '#000', backgroundColor: '#FFEBB5', paddingHorizontal: 4, fontWeight: '600' },
+    step: { fontWeight: '700', color: '#FFF', backgroundColor: '#999', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, overflow: 'hidden', fontSize: 12, marginRight: 5 }
 });
