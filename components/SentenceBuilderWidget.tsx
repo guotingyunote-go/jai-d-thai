@@ -330,52 +330,51 @@ export default function SentenceBuilderWidget() {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%', marginBottom: 24, backgroundColor: '#FFF', padding: 20, borderRadius: 24,
+        width: '100%', marginBottom: 20, backgroundColor: '#FFF', padding: 12, borderRadius: 24, // 減少內邊距增加寬度
         shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2
     },
-    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 },
-    title: { fontFamily: 'Prompt_700Bold', fontSize: 20 },
-    subtitle: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA', lineHeight: 20, marginTop: 6, flex: 1, paddingRight: 8 },
-    randomBtn: { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12 },
-    randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 16 },
+    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16, paddingHorizontal: 4 },
+    title: { fontFamily: 'Prompt_700Bold', fontSize: 18 },
+    subtitle: { fontFamily: 'Kanit', fontSize: 12, color: '#AAA', lineHeight: 18, marginTop: 4, flex: 1, paddingRight: 4 },
+    randomBtn: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 10 },
+    randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 14 },
     slotContainer: { 
         flexDirection: 'row', 
         alignItems: 'flex-start', 
-        gap: 2, // 縮小間距以適應手機寬度
-        marginTop: 10,
+        gap: 0, // 移除間距改用 flex 控制
+        marginTop: 12,
         width: '100%',
-        justifyContent: 'space-between'
     },
-    chipColumn: { flex: 1, alignItems: 'center' },
+    chipColumn: { flex: 1, alignItems: 'center', zIndex: 1 },
     chipHeader: { 
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        gap: 3, 
-        height: 28, 
+        gap: 2, 
+        height: 26, 
         width: '100%',
-        marginBottom: 6,
+        marginBottom: 8, // 強制增加外部間隙
     },
-    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 11, fontWeight: '700' },
-    outsideAudioBtn: { backgroundColor: '#F0F0F0', padding: 3, borderRadius: 6, transform: [{ scale: 0.85 }] },
-    outsideInfoBtn: { padding: 2, transform: [{ scale: 1.0 }] },
+    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 11, fontWeight: '700', letterSpacing: -0.2 },
+    outsideAudioBtn: { backgroundColor: '#F2F2F2', padding: 2, borderRadius: 4, transform: [{ scale: 0.8 }] },
+    outsideInfoBtn: { padding: 2, transform: [{ scale: 0.9 }] },
     chip: { 
-        width: '100%', 
-        height: 105, // 手機版稍微縮短高度
-        paddingVertical: 8, 
+        width: '94%', // 留出空隙給連接符
+        height: 100, 
+        paddingVertical: 6, 
         paddingHorizontal: 2,
-        borderRadius: 16, 
+        borderRadius: 14, 
         borderWidth: 1.5, 
         alignItems: 'center', 
         justifyContent: 'center',
         backgroundColor: '#FFF'
     },
-    chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%', flex: 1 },
-    chipThai: { fontSize: 16, letterSpacing: 0, marginBottom: 2 }, // 縮小泰文字體防止溢出
-    chipPhonetic: { fontFamily: 'Kanit', fontSize: 8.5, color: '#999', textAlign: 'center' },
-    chipZh: { fontFamily: 'Prompt_500Medium', fontSize: 9.5, color: '#666', marginTop: 1, textAlign: 'center' },
-    chipHint: { fontSize: 8, fontFamily: 'Kanit', marginTop: 6, fontWeight: '600', opacity: 0.4 },
-    connector: { width: 10, height: 105, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
+    chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%' },
+    chipThai: { fontSize: 15, letterSpacing: -0.5, marginBottom: 2 }, 
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 8, color: '#AAA', textAlign: 'center' },
+    chipZh: { fontFamily: 'Prompt_500Medium', fontSize: 9, color: '#777', marginTop: 1, textAlign: 'center' },
+    chipHint: { fontSize: 8, fontFamily: 'Kanit', marginTop: 4, fontWeight: '600', opacity: 0.35 },
+    connector: { width: 8, height: 100, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
     mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18 },
