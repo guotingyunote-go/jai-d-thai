@@ -338,37 +338,44 @@ const styles = StyleSheet.create({
     subtitle: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA', lineHeight: 20, marginTop: 6, flex: 1, paddingRight: 8 },
     randomBtn: { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12 },
     randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 16 },
-    slotContainer: { flexDirection: 'row', alignItems: 'flex-start', gap: 4, marginTop: 10 },
-    chipColumn: { flex: 1, alignItems: 'center', position: 'relative' },
+    slotContainer: { 
+        flexDirection: 'row', 
+        alignItems: 'flex-start', 
+        gap: 2, // 縮小間距以適應手機寬度
+        marginTop: 10,
+        width: '100%',
+        justifyContent: 'space-between'
+    },
+    chipColumn: { flex: 1, alignItems: 'center' },
     chipHeader: { 
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        gap: 6, 
-        height: 32, // 增加高度確保按鈕不被切到
+        gap: 3, 
+        height: 28, 
         width: '100%',
-        marginBottom: 8, // 明確的外部間距
+        marginBottom: 6,
     },
-    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 13, fontWeight: '700' },
-    outsideAudioBtn: { backgroundColor: '#F0F0F0', padding: 4, borderRadius: 8, transform: [{ scale: 0.9 }] },
-    outsideInfoBtn: { padding: 4, transform: [{ scale: 1.1 }] },
+    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 11, fontWeight: '700' },
+    outsideAudioBtn: { backgroundColor: '#F0F0F0', padding: 3, borderRadius: 6, transform: [{ scale: 0.85 }] },
+    outsideInfoBtn: { padding: 2, transform: [{ scale: 1.0 }] },
     chip: { 
         width: '100%', 
-        height: 115, // 稍微增加高度以適應內容
-        paddingVertical: 12, 
-        paddingHorizontal: 4,
-        borderRadius: 20, 
+        height: 105, // 手機版稍微縮短高度
+        paddingVertical: 8, 
+        paddingHorizontal: 2,
+        borderRadius: 16, 
         borderWidth: 1.5, 
         alignItems: 'center', 
         justifyContent: 'center',
         backgroundColor: '#FFF'
     },
     chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%', flex: 1 },
-    chipThai: { fontSize: 21, letterSpacing: 0.5, marginBottom: 4 },
-    chipPhonetic: { fontFamily: 'Kanit', fontSize: 10, color: '#999', textAlign: 'center' },
-    chipZh: { fontFamily: 'Prompt_500Medium', fontSize: 11, color: '#666', marginTop: 2, textAlign: 'center' },
-    chipHint: { fontSize: 9, fontFamily: 'Kanit', marginTop: 10, fontWeight: '600', opacity: 0.5 },
-    connector: { width: 12, height: 115, marginTop: 40, alignItems: 'center', justifyContent: 'center' },
+    chipThai: { fontSize: 16, letterSpacing: 0, marginBottom: 2 }, // 縮小泰文字體防止溢出
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 8.5, color: '#999', textAlign: 'center' },
+    chipZh: { fontFamily: 'Prompt_500Medium', fontSize: 9.5, color: '#666', marginTop: 1, textAlign: 'center' },
+    chipHint: { fontSize: 8, fontFamily: 'Kanit', marginTop: 6, fontWeight: '600', opacity: 0.4 },
+    connector: { width: 10, height: 105, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
     mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18 },
