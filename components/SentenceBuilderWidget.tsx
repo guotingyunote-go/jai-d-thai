@@ -134,41 +134,51 @@ export default function SentenceBuilderWidget() {
 
     const ChipContainer = ({ label, part, onPress, isParticle = false, particleContent = null }: any) => (
         <View style={styles.chipColumn}>
+            {/* 標籤與播放按鈕：放在框框外面上方 */}
             <View style={styles.chipHeader}>
                 <Text style={[styles.chipLabelExternal, { color: accentColor }]}>{label}</Text>
                 {!isParticle && (
-                    <TouchableOpacity onPress={() => playSound(part.thai)}>
-                        <Text style={{ fontSize: 12 }}>🔊</Text>
+                    <TouchableOpacity onPress={() => playSound(part.thai)} style={styles.outsideAudioBtn}>
+                        <Text style={{ fontSize: 13 }}>🔊</Text>
                     </TouchableOpacity>
                 )}
                 {isParticle && (
-                    <TouchableOpacity onPress={(e) => { e.stopPropagation(); setShowParticleInfo(true); }}>
+                    <TouchableOpacity onPress={(e) => { e.stopPropagation(); setShowParticleInfo(true); }} style={styles.outsideInfoBtn}>
                         <Text style={{ fontSize: 14, color: accentColor }}>ⓘ</Text>
                     </TouchableOpacity>
                 )}
             </View>
+
+            {/* 內容框框 */}
             <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={onPress}
                 style={[
                     styles.chip,
                     isParticle ? styles.particleChip : null,
-                    { backgroundColor: accentColor + (isParticle ? '15' : '08'), borderColor: accentColor + (isParticle ? '' : '15') }
+                    { backgroundColor: accentColor + (isParticle ? '15' : '08'), borderColor: accentColor + (isParticle ? '30' : '15') }
                 ]}
             >
-                <Text
-                    numberOfLines={1}
-                    adjustsFontSizeToFit
-                    style={[styles.chipThai, { color: accentColor, fontFamily: thaiFont }]}
-                >
-                    {isParticle ? particleContent.thai : part.thai}
-                </Text>
-                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.chipPhonetic}>
-                    {isParticle ? particleContent.phonetic : part.phonetic}
-                </Text>
-                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.chipZh}>
-                    {isParticle ? particleContent.zh : part.zhTW}
-                </Text>
+                <View style={styles.chipInner}>
+                    <Text
+                        numberOfLines={1}
+                        adjustsFontSizeToFit
+                        style={[styles.chipThai, { color: accentColor, fontFamily: thaiFont }]}
+                    >
+                        {isParticle ? particleContent.thai : part.thai}
+                    </Text>
+                    <Text numberOfLines={1} adjustsFontSizeToFit style={styles.chipPhonetic}>
+                        {isParticle ? particleContent.phonetic : part.phonetic}
+                    </Text>
+                    <Text numberOfLines={1} adjustsFontSizeToFit style={styles.chipZh}>
+                        {isParticle ? particleContent.zh : part.zhTW}
+                    </Text>
+                    
+                    {/* 點擊提示：放在框框內 */}
+                    <Text style={[styles.chipHint, { color: accentColor + '80' }]}>
+                        {isParticle ? '點擊切換' : '點擊修改'}
+                    </Text>
+                </View>
             </TouchableOpacity>
         </View>
     );
@@ -277,7 +287,7 @@ export default function SentenceBuilderWidget() {
             </View>
 
             <View style={styles.slotContainer}>
-                <ChipContainer label="主語" part={selection.p} onPress={() => setPickerType('p')} />
+                <ChipContainer label="主詞" part={selection.p} onPress={() => setPickerType('p')} />
                 <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
                 <ChipContainer label="動詞" part={selection.v} onPress={() => setPickerType('v')} />
                 <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
@@ -299,8 +309,10 @@ export default function SentenceBuilderWidget() {
                             <Text style={[styles.chipLabelExternal, { color: '#BBB' }]}>語助詞</Text>
                         </View>
                         <View style={[styles.chip, { backgroundColor: '#F8F8F8', borderColor: '#EEE', opacity: 0.5 }]}>
-                            <Text style={[styles.chipThai, { color: '#CCC' }]}>-</Text>
-                            <Text style={styles.chipZh}>無需結尾</Text>
+                            <View style={styles.chipInner}>
+                                <Text style={[styles.chipThai, { color: '#CCC' }]}>-</Text>
+                                <Text style={styles.chipZh}>無需結尾</Text>
+                            </View>
                         </View>
                     </View>
                 )}
@@ -328,13 +340,17 @@ const styles = StyleSheet.create({
     randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 16 },
     slotContainer: { flexDirection: 'row', alignItems: 'flex-start', gap: 4 },
     chipColumn: { flex: 1, alignItems: 'center' },
-    chipHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 4, marginBottom: 6, height: 20 },
-    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 11, opacity: 0.7 },
-    chip: { width: '100%', height: 90, padding: 4, borderRadius: 16, borderWidth: 1, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
-    chipThai: { fontSize: 18, letterSpacing: 0.5, marginBottom: 2 },
-    chipPhonetic: { fontFamily: 'Kanit', fontSize: 9, color: '#AAA', textAlign: 'center' },
-    chipZh: { fontFamily: 'Prompt_500Medium', fontSize: 10, color: '#777', marginTop: 1, textAlign: 'center' },
-    connector: { width: 12, paddingTop: 38, alignItems: 'center' },
+    chipHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 8, height: 24 },
+    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 13, fontWeight: '700' },
+    outsideAudioBtn: { backgroundColor: '#F0F0F0', padding: 4, borderRadius: 8 },
+    outsideInfoBtn: { padding: 4 },
+    chip: { width: '100%', height: 110, padding: 8, borderRadius: 20, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+    chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%' },
+    chipThai: { fontSize: 20, letterSpacing: 0.5, marginBottom: 4 },
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 10, color: '#999', textAlign: 'center' },
+    chipZh: { fontFamily: 'Prompt_500Medium', fontSize: 11, color: '#666', marginTop: 2, textAlign: 'center' },
+    chipHint: { fontSize: 9, fontFamily: 'Kanit', marginTop: 8, fontWeight: '600', opacity: 0.6 },
+    connector: { width: 12, paddingTop: 60, alignItems: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
     mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18 },
