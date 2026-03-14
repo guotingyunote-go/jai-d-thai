@@ -1,12 +1,9 @@
 import * as Haptics from 'expo-haptics';
 import * as Speech from 'expo-speech';
-import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Easing, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
+import React, { useState } from 'react';
+import { Animated, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 import { LESSONS } from '../constants/lessons';
 import { useVibe } from '../context/VibeContext';
-
-const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 export default function CharacterLabWidget() {
     const { mode, fontType } = useVibe() as any;
@@ -118,42 +115,30 @@ export default function CharacterLabWidget() {
                         </View>
                     </View>
 
-                    <TouchableOpacity onPress={() => playSound(currentLesson.nameThai)} style={styles.letterBox}>
+                    <TouchableOpacity onPress={() => playSound(currentLesson.letter)} style={styles.letterBox}>
                         <Text style={[styles.bigChar, { color: accentColor, fontFamily: thaiFont }]}>
                             {currentLesson.letter}
                         </Text>
-                        <Text style={styles.pronounceHint}>🔊 {currentLesson.letterLabel}</Text>
+                        <Text style={styles.pronounceHint}>🔊 {currentLesson.nameThai.split(' ')[0]}</Text>
                     </TouchableOpacity>
-
-                    <View style={styles.directionSection}>
-                        <Text style={styles.sectionLabel}>筆順指引</Text>
-                        <View style={styles.svgContainer}>
-                            <Svg height="100" width="100" viewBox="0 0 100 100">
-                                <Path d={currentLesson.svgPath} fill="none" stroke="#EEE" strokeWidth="8" strokeLinecap="round" />
-                                <Path d={currentLesson.svgPath} fill="none" stroke={accentColor} strokeWidth="6" strokeLinecap="round" opacity={0.8} />
-                                <Circle cx={currentLesson.startPoint.cx} cy={currentLesson.startPoint.cy} r="5" fill="#FF6B6B" />
-                            </Svg>
-                            <Text style={styles.startHint}>🔴 為起點</Text>
-                        </View>
-                    </View>
                 </View>
 
                 {/* 底部範例單字區 */}
                 <View style={styles.examplesSection}>
                     <Text style={[styles.sectionLabel, { marginBottom: 12 }]}>單字範例應用 💡</Text>
                     <View style={styles.exampleRow}>
-                        <View style={[styles.exampleItem, { borderLeftColor: '#14B886' }]}>
+                        <TouchableOpacity style={[styles.exampleItem, { borderLeftColor: '#14B886' }]} onPress={() => playSound(currentLesson.street.thai)}>
                             <Text style={styles.exampleTag}>生活模式 (Street)</Text>
                             <Text style={[styles.exampleThai, { color: '#14B886' }]}>{currentLesson.street.thai}</Text>
                             <Text style={styles.examplePhonetic}>{currentLesson.street.phonetic}</Text>
                             <Text style={styles.exampleZh}>{currentLesson.street.zhTW}</Text>
-                        </View>
-                        <View style={[styles.exampleItem, { borderLeftColor: '#7851A9' }]}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.exampleItem, { borderLeftColor: '#7851A9' }]} onPress={() => playSound(currentLesson.faith.thai)}>
                             <Text style={styles.exampleTag}>信仰模式 (Faith)</Text>
                             <Text style={[styles.exampleThai, { color: '#7851A9' }]}>{currentLesson.faith.thai}</Text>
                             <Text style={styles.examplePhonetic}>{currentLesson.faith.phonetic}</Text>
                             <Text style={styles.exampleZh}>{currentLesson.faith.zhTW}</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -226,11 +211,7 @@ const styles = StyleSheet.create({
     letterBox: { flex: 1, alignItems: 'center' },
     bigChar: { fontSize: 80, marginBottom: 4 },
     pronounceHint: { fontFamily: 'Kanit', fontSize: 14, color: '#666' },
-    
-    directionSection: { width: 100, alignItems: 'center', borderLeftWidth: 1, borderLeftColor: '#F0F0F0', paddingLeft: 10 },
     sectionLabel: { fontFamily: 'Prompt_700Bold', fontSize: 10, color: '#BBB', textTransform: 'uppercase', marginBottom: 5 },
-    svgContainer: { alignItems: 'center' },
-    startHint: { fontFamily: 'Kanit', fontSize: 10, color: '#FF6B6B', marginTop: 5, fontWeight: '700' },
     
     examplesSection: { padding: 20 },
     exampleRow: { flexDirection: 'row', gap: 10 },

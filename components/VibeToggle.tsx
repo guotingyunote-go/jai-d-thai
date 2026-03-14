@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Animated, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useVibe } from '../context/VibeContext';
 
 export default function VibeToggle() {
@@ -31,13 +31,23 @@ export default function VibeToggle() {
                     <Text style={styles.emoji}>🛒</Text>
                     <Text style={[styles.label, !isFaith ? styles.activeText : styles.inactiveText]}>日常模式</Text>
                 </View>
-                <Switch
-                    trackColor={{ false: 'rgba(255,255,255,0.3)', true: 'rgba(255,255,255,0.3)' }}
-                    thumbColor={'#FFFFFF'}
-                    onValueChange={toggleMode}
-                    value={isFaith}
-                    style={styles.switch}
-                />
+                <TouchableOpacity
+                    activeOpacity={0.9}
+                    onPress={toggleMode}
+                    style={styles.customSwitch}
+                >
+                    <Animated.View style={[
+                        styles.customThumb,
+                        {
+                            transform: [{
+                                translateX: fadeAnim.interpolate({
+                                    inputRange: [0, 1],
+                                    outputRange: [2, 24]
+                                })
+                            }]
+                        }
+                    ]} />
+                </TouchableOpacity>
                 <View style={styles.labelWrapper}>
                     <Text style={styles.emoji}>🌏</Text>
                     <Text style={[styles.label, isFaith ? styles.activeText : styles.inactiveText]}>宣教模式</Text>
@@ -88,7 +98,8 @@ const styles = StyleSheet.create({
     },
     labelWrapper: { alignItems: 'center' },
     emoji: { fontSize: 18 },
-    switch: { marginHorizontal: 12 },
+    customSwitch: { width: 50, height: 28, borderRadius: 14, backgroundColor: 'rgba(255,255,255,0.3)', justifyContent: 'center', marginHorizontal: 12 },
+    customThumb: { width: 24, height: 24, borderRadius: 12, backgroundColor: '#FFF', position: 'absolute' },
     label: { fontFamily: 'Kanit_600SemiBold', fontSize: 13, marginTop: 2 },
     activeText: { color: '#FFFFFF' },
     inactiveText: { color: 'rgba(255,255,255,0.5)' },
