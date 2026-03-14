@@ -97,15 +97,15 @@ const styles = StyleSheet.create({
         borderRadius: 32,
     },
     labelWrapper: { alignItems: 'center' },
-    emoji: { fontSize: 18 },
+    emoji: { fontSize: 22 },
     customSwitch: { width: 50, height: 28, borderRadius: 14, backgroundColor: 'rgba(255,255,255,0.3)', justifyContent: 'center', marginHorizontal: 12 },
     customThumb: { width: 24, height: 24, borderRadius: 12, backgroundColor: '#FFF', position: 'absolute' },
-    label: { fontFamily: 'Kanit_600SemiBold', fontSize: 13, marginTop: 2 },
+    label: { fontFamily: 'Kanit_600SemiBold', fontSize: 17, marginTop: 2 },
     activeText: { color: '#FFFFFF' },
     inactiveText: { color: 'rgba(255,255,255,0.5)' },
     controlsRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 20 },
     controlItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-    controlLabel: { fontFamily: 'Kanit', fontSize: 13, color: '#666' },
+    controlLabel: { fontFamily: 'Kanit', fontSize: 17, color: '#666' },
     smallBtn: {
         paddingHorizontal: 12,
         paddingVertical: 6,
@@ -115,6 +115,6 @@ const styles = StyleSheet.create({
         borderColor: '#DDD'
     },
     btnActive: { backgroundColor: '#333', borderColor: '#333' },
-    btnText: { fontFamily: 'Kanit_600SemiBold', fontSize: 12, color: '#666' },
+    btnText: { fontFamily: 'Kanit_600SemiBold', fontSize: 16, color: '#666' },
     btnTextActive: { color: '#FFF' },
 });

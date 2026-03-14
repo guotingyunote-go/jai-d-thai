@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     },
     lessonCount: {
         fontFamily: 'Kanit',
-        fontSize: 13,
+        fontSize: 17,
         color: '#AAA',
         letterSpacing: 0.5,
     },
@@ -272,17 +272,17 @@ const styles = StyleSheet.create({
     },
     letterNameText: {
         fontFamily: 'Kanit_600SemiBold',
-        fontSize: 15,
+        fontSize: 19,
         color: '#333',
     },
     letterNameChar: {
         fontFamily: 'Kanit_600SemiBold',
-        fontSize: 20,
+        fontSize: 24,
         color: '#333',
     },
     letterRomanName: {
         fontFamily: 'Kanit',
-        fontSize: 12,
+        fontSize: 16,
         color: '#CCC',
         letterSpacing: 2,
         marginTop: -8,
@@ -295,12 +295,12 @@ const styles = StyleSheet.create({
     },
     classText: {
         fontFamily: 'Kanit',
-        fontSize: 13,
+        fontSize: 17,
         fontWeight: '600',
     },
     letterPreview: {
         fontFamily: 'Kanit_600SemiBold',
-        fontSize: 80,
+        fontSize: 84,
         marginVertical: 4,
     },
     svgContainer: {
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
     },
     tapPrompt: {
         fontFamily: 'Kanit',
-        fontSize: 13,
+        fontSize: 17,
         color: '#BBB',
         marginTop: 6,
     },
@@ -332,7 +332,7 @@ const styles = StyleSheet.create({
     },
     navBtnText: {
         fontFamily: 'Kanit',
-        fontSize: 14,
+        fontSize: 18,
         fontWeight: '600',
     },
     dotRow: {
@@ -363,13 +363,13 @@ const styles = StyleSheet.create({
     },
     vocabWord: {
         fontFamily: 'Prompt_700Bold',
-        fontSize: 36,
+        fontSize: 40,
         color: '#222',
         lineHeight: 44,
     },
     vocabPhonetic: {
         fontFamily: 'Kanit',
-        fontSize: 15,
+        fontSize: 19,
         color: '#888',
         letterSpacing: 0.5,
     },
@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
     },
     pronounceBtnText: {
         fontFamily: 'Kanit_600SemiBold',
-        fontSize: 15,
+        fontSize: 19,
         color: '#FFF',
     },
     divider: {
@@ -391,13 +391,13 @@ const styles = StyleSheet.create({
     },
     vocabZhTW: {
         fontFamily: 'Prompt_500Medium',
-        fontSize: 22,
+        fontSize: 26,
         color: '#333',
         marginBottom: 8,
     },
     vocabNote: {
         fontFamily: 'Kanit',
-        fontSize: 13,
+        fontSize: 17,
         color: '#777',
         lineHeight: 20,
     },

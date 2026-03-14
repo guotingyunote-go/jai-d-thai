@@ -132,7 +132,7 @@ export default function Home() {
                             activeOpacity={0.8}
                         >
                             <Text style={styles.dropdownHeaderText}>{selectedCategory}</Text>
-                            <Text style={{ color: accentColor, fontSize: 12 }}>{isDropdownOpen ? '▲' : '▼'}</Text>
+                            <Text style={{ color: accentColor, fontSize: 16 }}>{isDropdownOpen ? '▲' : '▼'}</Text>
                         </TouchableOpacity>
 
                         {isDropdownOpen && (
@@ -190,14 +190,14 @@ const styles = StyleSheet.create({
     scroll: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 40 },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
     appBrand: { flexDirection: 'row', alignItems: 'baseline', gap: 8 },
-    appNameThai: { fontFamily: 'Kanit_600SemiBold', fontSize: 34, letterSpacing: 1 },
-    appNameZH: { fontFamily: 'Kanit_600SemiBold', fontSize: 18, color: '#888' },
+    appNameThai: { fontFamily: 'Kanit_600SemiBold', fontSize: 38, letterSpacing: 1 },
+    appNameZH: { fontFamily: 'Kanit_600SemiBold', fontSize: 22, color: '#888' },
     modeBadge: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 16 },
-    modeBadgeText: { fontFamily: 'Kanit', fontSize: 13, fontWeight: '600' },
+    modeBadgeText: { fontFamily: 'Kanit', fontSize: 17, fontWeight: '600' },
     sectionWrapper: { marginTop: 28 },
     sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 },
     sectionDot: { width: 8, height: 8, borderRadius: 4 },
-    sectionTitle: { fontFamily: 'Prompt_700Bold', fontSize: 18, letterSpacing: 0.5 },
+    sectionTitle: { fontFamily: 'Prompt_700Bold', fontSize: 22, letterSpacing: 0.5 },
     dropdownContainer: { position: 'relative', marginBottom: 20 },
     dropdownHeader: {
         flexDirection: 'row',
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 5, elevation: 2
     },
-    dropdownHeaderText: { fontFamily: 'Kanit_600SemiBold', fontSize: 16, color: '#333' },
+    dropdownHeaderText: { fontFamily: 'Kanit_600SemiBold', fontSize: 20, color: '#333' },
     dropdownList: {
         position: 'absolute',
         top: 62,
@@ -225,6 +225,6 @@ const styles = StyleSheet.create({
         zIndex: 9999
     },
     dropdownItem: { padding: 12, borderRadius: 10 },
-    dropdownItemText: { fontFamily: 'Kanit', fontSize: 15, color: '#555' },
+    dropdownItemText: { fontFamily: 'Kanit', fontSize: 19, color: '#555' },
     listContainer: { gap: 0, marginTop: 10 },
 });

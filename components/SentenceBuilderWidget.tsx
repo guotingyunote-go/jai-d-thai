@@ -139,12 +139,12 @@ export default function SentenceBuilderWidget() {
                 <Text style={[styles.chipLabelExternal, { color: accentColor }]}>{label}</Text>
                 {!isParticle && (
                     <TouchableOpacity onPress={() => playSound(part.thai)} style={styles.outsideAudioBtn}>
-                        <Text style={{ fontSize: 13 }}>🔊</Text>
+                        <Text style={{ fontSize: 17 }}>🔊</Text>
                     </TouchableOpacity>
                 )}
                 {isParticle && (
                     <TouchableOpacity onPress={(e) => { e.stopPropagation(); setShowParticleInfo(true); }} style={styles.outsideInfoBtn}>
-                        <Text style={{ fontSize: 14, color: accentColor }}>ⓘ</Text>
+                        <Text style={{ fontSize: 18, color: accentColor }}>ⓘ</Text>
                     </TouchableOpacity>
                 )}
             </View>
@@ -211,7 +211,7 @@ export default function SentenceBuilderWidget() {
                             👩 <Text style={styles.bold}>女生：分為兩種！</Text>{'\n'}
                             • <Text style={styles.bold}>ค่ะ (khâ)</Text>：標準泰語。適用於全泰國、曼谷、正式場合。{'\n'}
                             • <Text style={styles.bold}>เจ้า (Jao)</Text>：泰北方言(蘭納語)。在清邁、清萊市集或部落使用，會讓當地人覺得超級親切、零距離！{'\n\n'}
-                            <Text style={{ color: '#888', fontSize: 13 }}>*(當你選取女聲時，可以直接點擊語助詞按鈕進行模式切換)</Text>
+                            <Text style={{ color: '#888', fontSize: 17 }}>*(當你選取女聲時，可以直接點擊語助詞按鈕進行模式切換)</Text>
                         </Text>
                     </ScrollView>
                 </View>
@@ -334,10 +334,10 @@ const styles = StyleSheet.create({
         shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2
     },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16, paddingHorizontal: 4 },
-    title: { fontFamily: 'Prompt_700Bold', fontSize: 18 },
-    subtitle: { fontFamily: 'Kanit', fontSize: 12, color: '#AAA', lineHeight: 18, marginTop: 4, flex: 1, paddingRight: 4 },
+    title: { fontFamily: 'Prompt_700Bold', fontSize: 22 },
+    subtitle: { fontFamily: 'Kanit', fontSize: 16, color: '#AAA', lineHeight: 18, marginTop: 4, flex: 1, paddingRight: 4 },
     randomBtn: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 10 },
-    randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 14 },
+    randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18 },
     slotContainer: { 
         flexDirection: 'row', 
         alignItems: 'flex-start', 
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom: 8, // 強制增加外部間隙
     },
-    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 11, fontWeight: '700', letterSpacing: -0.2 },
+    chipLabelExternal: { fontFamily: 'Kanit_600SemiBold', fontSize: 15, fontWeight: '700', letterSpacing: -0.2 },
     outsideAudioBtn: { backgroundColor: '#F2F2F2', padding: 2, borderRadius: 4, transform: [{ scale: 0.8 }] },
     outsideInfoBtn: { padding: 2, transform: [{ scale: 0.9 }] },
     chip: { 
@@ -370,29 +370,29 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF'
     },
     chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%', paddingHorizontal: 2 },
-    chipThai: { fontSize: 16, letterSpacing: -0.5, marginBottom: 2 }, 
-    chipPhonetic: { fontFamily: 'Kanit', fontSize: 8.5, color: '#AAA', textAlign: 'center' },
+    chipThai: { fontSize: 20, letterSpacing: -0.5, marginBottom: 2 }, 
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA', textAlign: 'center' },
     chipZh: { 
         fontFamily: 'Prompt_700Bold', // 加粗增加震撼感
-        fontSize: 14,                // 放大到極限，配合 adjustsFontSizeToFit
+        fontSize: 18,                // 放大到極限，配合 adjustsFontSizeToFit
         color: '#444', 
         marginTop: 4, 
         textAlign: 'center',
         width: '100%'
     },
-    chipHint: { fontSize: 8, fontFamily: 'Kanit', marginTop: 4, fontWeight: '600', opacity: 0.3 },
+    chipHint: { fontSize: 13, fontFamily: 'Kanit', marginTop: 4, fontWeight: '600', opacity: 0.3 },
     connector: { width: 8, height: 100, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
-    mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18 },
+    mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 22 },
     modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' },
     modalContent: { backgroundColor: '#FFF', borderTopLeftRadius: 28, borderTopRightRadius: 28, padding: 24, paddingBottom: 50 },
     modalHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 24, alignItems: 'center' },
-    modalTitle: { fontFamily: 'Prompt_700Bold', fontSize: 22 },
-    closeBtn: { color: '#666', fontSize: 16 },
+    modalTitle: { fontFamily: 'Prompt_700Bold', fontSize: 26 },
+    closeBtn: { color: '#666', fontSize: 20 },
     pickerItem: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 18, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
-    pickerThai: { fontSize: 28, color: '#333', letterSpacing: 0.5 },
-    pickerSub: { fontSize: 16, color: '#888', marginTop: 4 },
-    infoText: { fontFamily: 'Kanit', fontSize: 16, color: '#444', lineHeight: 28 },
+    pickerThai: { fontSize: 32, color: '#333', letterSpacing: 0.5 },
+    pickerSub: { fontSize: 20, color: '#888', marginTop: 4 },
+    infoText: { fontFamily: 'Kanit', fontSize: 20, color: '#444', lineHeight: 28 },
     bold: { fontWeight: 'bold', color: '#111' }
 });

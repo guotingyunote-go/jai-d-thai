@@ -139,8 +139,8 @@ export default function WordMasterWidget() {
 const styles = StyleSheet.create({
     container: { width: '100%', marginBottom: 24 },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
-    title: { fontFamily: 'Prompt_700Bold', fontSize: 18 },
-    refresh: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA' },
+    title: { fontFamily: 'Prompt_700Bold', fontSize: 22 },
+    refresh: { fontFamily: 'Kanit', fontSize: 17, color: '#AAA' },
     mainContent: {
         backgroundColor: '#FFF',
         borderRadius: 24,
@@ -157,11 +157,11 @@ const styles = StyleSheet.create({
         alignItems: 'center', justifyContent: 'center'
     },
     backCard: { backgroundColor: '#F0F9F5' },
-    thaiText: { fontSize: 36, textAlign: 'center' },
-    fontLabel: { fontFamily: 'Kanit', fontSize: 10, color: '#BBB', marginTop: 4 },
+    thaiText: { fontSize: 40, textAlign: 'center' },
+    fontLabel: { fontFamily: 'Kanit', fontSize: 15, color: '#BBB', marginTop: 4 },
     infoSide: { flex: 1, justifyContent: 'center' },
-    zhTW: { fontFamily: 'Prompt_700Bold', fontSize: 24, color: '#333' },
-    phonetic: { fontFamily: 'Kanit', fontSize: 14, color: '#888', marginBottom: 12 },
+    zhTW: { fontFamily: 'Prompt_700Bold', fontSize: 28, color: '#333' },
+    phonetic: { fontFamily: 'Kanit', fontSize: 18, color: '#888', marginBottom: 12 },
     playBtn: { paddingVertical: 8, paddingHorizontal: 12, borderRadius: 12, alignSelf: 'flex-start' },
-    playIcon: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 12 }
+    playIcon: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 16 }
 });
