@@ -370,17 +370,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF'
     },
     chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%', paddingHorizontal: 2 },
-    chipThai: { fontSize: 20, letterSpacing: -0.5, marginBottom: 2 }, 
-    chipPhonetic: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA', textAlign: 'center' },
+    chipThai: { fontSize: 20, letterSpacing: -0.5, marginBottom: 0, lineHeight: 22 }, 
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA', textAlign: 'center', lineHeight: 14 },
     chipZh: { 
-        fontFamily: 'Prompt_700Bold', // 加粗增加震撼感
-        fontSize: 18,                // 放大到極限，配合 adjustsFontSizeToFit
+        fontFamily: 'Prompt_700Bold', 
+        fontSize: 18,                
         color: '#444', 
-        marginTop: 4, 
+        marginTop: 0, 
+        lineHeight: 20,
         textAlign: 'center',
         width: '100%'
     },
-    chipHint: { fontSize: 13, fontFamily: 'Kanit', marginTop: 4, fontWeight: '600', opacity: 0.3 },
+    chipHint: { fontSize: 13, fontFamily: 'Kanit', marginTop: 0, fontWeight: '600', opacity: 0.3, lineHeight: 14 },
     connector: { width: 8, height: 100, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
