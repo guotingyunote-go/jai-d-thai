@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
     outsideInfoBtn: { padding: 2, transform: [{ scale: 0.9 }] },
     chip: { 
         width: '94%', // 留出空隙給連接符
-        height: 100, 
+        height: 110, 
         paddingVertical: 6, 
         paddingHorizontal: 2,
         borderRadius: 14, 
@@ -381,8 +381,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         width: '100%'
     },
-    chipHint: { fontSize: 13, fontFamily: 'Kanit', marginTop: 0, fontWeight: '600', opacity: 0.3, lineHeight: 14 },
-    connector: { width: 8, height: 100, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
+    chipHint: { fontSize: 13, fontFamily: 'Kanit', marginTop: 8, fontWeight: '600', opacity: 0.3, lineHeight: 14 },
+    connector: { width: 8, height: 110, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
     mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 22 },
