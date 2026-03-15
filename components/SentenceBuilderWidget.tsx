@@ -160,24 +160,32 @@ export default function SentenceBuilderWidget() {
                 ]}
             >
                 <View style={styles.chipInner}>
-                    <Text
-                        numberOfLines={1}
-                        adjustsFontSizeToFit
-                        style={[styles.chipThai, { color: accentColor, fontFamily: thaiFont }]}
-                    >
-                        {isParticle ? particleContent.thai : part.thai}
-                    </Text>
-                    <Text numberOfLines={1} adjustsFontSizeToFit style={styles.chipPhonetic}>
-                        {isParticle ? particleContent.phonetic : part.phonetic}
-                    </Text>
-                    <Text numberOfLines={1} adjustsFontSizeToFit style={styles.chipZh}>
-                        {isParticle ? particleContent.zh : part.zhTW}
-                    </Text>
+                    <View style={styles.thaiContainer}>
+                        <Text
+                            numberOfLines={1}
+                            adjustsFontSizeToFit
+                            style={[styles.chipThai, { color: accentColor, fontFamily: thaiFont }]}
+                        >
+                            {isParticle ? particleContent.thai : part.thai}
+                        </Text>
+                    </View>
+                    <View style={styles.phoneticContainer}>
+                        <Text numberOfLines={1} adjustsFontSizeToFit style={styles.chipPhonetic}>
+                            {isParticle ? particleContent.phonetic : part.phonetic}
+                        </Text>
+                    </View>
+                    <View style={styles.zhContainer}>
+                        <Text numberOfLines={2} adjustsFontSizeToFit style={styles.chipZh}>
+                            {isParticle ? particleContent.zh : part.zhTW}
+                        </Text>
+                    </View>
                     
                     {/* 點擊提示：放在框框內 */}
-                    <Text style={[styles.chipHint, { color: accentColor + '80' }]}>
-                        {isParticle ? '點擊切換' : '點擊修改'}
-                    </Text>
+                    <View style={styles.hintContainer}>
+                        <Text style={[styles.chipHint, { color: accentColor + '80' }]}>
+                            {isParticle ? '點擊切換' : '點擊修改'}
+                        </Text>
+                    </View>
                 </View>
             </TouchableOpacity>
         </View>
@@ -310,8 +318,14 @@ export default function SentenceBuilderWidget() {
                         </View>
                         <View style={[styles.chip, { backgroundColor: '#F8F8F8', borderColor: '#EEE', opacity: 0.5 }]}>
                             <View style={styles.chipInner}>
-                                <Text style={[styles.chipThai, { color: '#CCC' }]}>-</Text>
-                                <Text style={styles.chipZh}>無需結尾</Text>
+                                <View style={styles.thaiContainer}>
+                                    <Text style={[styles.chipThai, { color: '#CCC' }]}>-</Text>
+                                </View>
+                                <View style={styles.phoneticContainer} />
+                                <View style={styles.zhContainer}>
+                                    <Text style={styles.chipZh}>無需結尾</Text>
+                                </View>
+                                <View style={styles.hintContainer} />
                             </View>
                         </View>
                     </View>
@@ -334,7 +348,7 @@ const styles = StyleSheet.create({
         shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2
     },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16, paddingHorizontal: 4 },
-    title: { fontFamily: 'Prompt_700Bold', fontSize: 22 },
+    title: { fontFamily: 'Prompt_700Bold', fontSize: 22, fontWeight: 'bold' },
     subtitle: { fontFamily: 'Kanit', fontSize: 16, color: '#AAA', lineHeight: 18, marginTop: 4, flex: 1, paddingRight: 4 },
     randomBtn: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 10 },
     randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18 },
@@ -360,29 +374,32 @@ const styles = StyleSheet.create({
     outsideInfoBtn: { padding: 2, transform: [{ scale: 0.9 }] },
     chip: { 
         width: '94%', // 留出空隙給連接符
-        height: 110, 
+        height: 126, 
         paddingVertical: 6, 
         paddingHorizontal: 2,
         borderRadius: 14, 
         borderWidth: 1.5, 
         alignItems: 'center', 
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         backgroundColor: '#FFF'
     },
-    chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%', paddingHorizontal: 2 },
-    chipThai: { fontSize: 18, marginBottom: 2, lineHeight: 26 }, 
-    chipPhonetic: { fontFamily: 'Kanit', fontSize: 12, color: '#AAA', textAlign: 'center', lineHeight: 16, marginBottom: 2 },
+    chipInner: { alignItems: 'center', justifyContent: 'flex-start', width: '100%', height: '100%', paddingHorizontal: 0 },
+    thaiContainer: { height: 36, justifyContent: 'flex-end', alignItems: 'center', width: '100%' },
+    chipThai: { fontSize: 20, marginBottom: 0, lineHeight: 28, textAlign: 'center' }, 
+    phoneticContainer: { height: 18, justifyContent: 'center', alignItems: 'center', width: '100%', marginBottom: 4 },
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 12, color: '#AAA', textAlign: 'center', lineHeight: 16 },
+    zhContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%' },
     chipZh: { 
         fontFamily: 'Prompt_700Bold', 
-        fontSize: 16,                
+        fontSize: 15,                
         color: '#444', 
-        marginTop: 0, 
-        lineHeight: 22,
+        lineHeight: 18,
         textAlign: 'center',
         width: '100%'
     },
-    chipHint: { fontSize: 12, fontFamily: 'Kanit', marginTop: 6, fontWeight: '600', opacity: 0.3, lineHeight: 16 },
-    connector: { width: 8, height: 110, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
+    hintContainer: { height: 16, justifyContent: 'flex-end', alignItems: 'center', width: '100%' },
+    chipHint: { fontSize: 11, fontFamily: 'Kanit', fontWeight: '600', opacity: 0.4, lineHeight: 14 },
+    connector: { width: 8, height: 126, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
     mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 22 },
