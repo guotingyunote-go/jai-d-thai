@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     headerSubtitle: { fontFamily: 'Kanit', fontSize: 17, color: '#AAA' },
     tabContainer: { flexDirection: 'row', backgroundColor: '#F5F5F7', borderRadius: 16, padding: 5, marginBottom: 20 },
     tabBtn: { flex: 1, paddingVertical: 10, borderRadius: 12, alignItems: 'center' },
-    tabText: { fontFamily: 'Kanit_600SemiBold', fontSize: 19 },
+    tabText: { fontFamily: 'Kanit_600SemiBold', fontSize: 18, fontWeight: 'bold' },
     
     cardWrapper: { width: '100%' },
     mainCard: { backgroundColor: '#FFF', borderRadius: 24, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.08, shadowRadius: 20, elevation: 5 },
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     letterBox: { flex: 1, alignItems: 'center' },
     bigChar: { fontSize: 84, marginBottom: 4 },
     pronounceHint: { fontFamily: 'Kanit', fontSize: 18, color: '#666' },
-    sectionLabel: { fontFamily: 'Prompt_700Bold', fontSize: 15, color: '#BBB', textTransform: 'uppercase', marginBottom: 5 },
+    sectionLabel: { fontFamily: 'Prompt_700Bold', fontSize: 14, color: '#BBB', textTransform: 'uppercase', marginBottom: 5 },
     
     examplesSection: { padding: 20 },
     exampleRow: { flexDirection: 'row', gap: 10 },
@@ -223,10 +223,10 @@ const styles = StyleSheet.create({
     
     controls: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 20, paddingHorizontal: 4 },
     navBtn: { paddingHorizontal: 20, paddingVertical: 12, backgroundColor: '#F0F0F0', borderRadius: 14 },
-    navBtnText: { fontFamily: 'Kanit_600SemiBold', fontSize: 19, color: '#555' },
+    navBtnText: { fontFamily: 'Kanit_600SemiBold', fontSize: 18, color: '#555', fontWeight: 'bold' },
     progressCounter: { alignItems: 'center' },
     progressText: { fontFamily: 'Prompt_700Bold', fontSize: 22 },
-    classLabel: { fontFamily: 'Kanit', fontSize: 16, color: '#BBB' },
+    classLabel: { fontFamily: 'Kanit', fontSize: 14, color: '#BBB' },
 
     guideContainer: { backgroundColor: '#FFF', borderRadius: 24, padding: 20, maxHeight: 500 },
     guideCard: { backgroundColor: '#F9F9FB', padding: 20, borderRadius: 18, marginBottom: 16 },

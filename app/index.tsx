@@ -188,10 +188,10 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: { flex: 1 },
     scroll: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 40 },
-    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, marginBottom: 16, width: '100%' },
-    appBrand: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, width: '100%' },
+    appBrand: { flex: 1, flexDirection: 'row', alignItems: 'flex-end', gap: 6 },
     appNameThai: { fontFamily: 'Kanit_600SemiBold', fontSize: 32, fontWeight: 'bold' },
-    appNameZH: { fontFamily: 'Kanit_600SemiBold', fontSize: 18, color: '#888', fontWeight: 'bold' },
+    appNameZH: { fontFamily: 'Kanit_600SemiBold', fontSize: 18, color: '#888', fontWeight: 'bold', marginBottom: 4 },
     modeBadge: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 16 },
     modeBadgeText: { fontFamily: 'Kanit', fontSize: 15, fontWeight: 'bold' },
     sectionWrapper: { marginTop: 28 },

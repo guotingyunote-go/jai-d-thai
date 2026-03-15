@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
     connector: { width: 8, height: 126, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
-    mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 22 },
+    mainSpeakText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18, fontWeight: 'bold' },
     modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' },
     modalContent: { backgroundColor: '#FFF', borderTopLeftRadius: 28, borderTopRightRadius: 28, padding: 24, paddingBottom: 50 },
     modalHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 24, alignItems: 'center' },
