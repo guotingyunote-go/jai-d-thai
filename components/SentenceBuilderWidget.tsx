@@ -370,18 +370,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF'
     },
     chipInner: { alignItems: 'center', justifyContent: 'center', width: '100%', paddingHorizontal: 2 },
-    chipThai: { fontSize: 20, letterSpacing: -0.5, marginBottom: 0, lineHeight: 22 }, 
-    chipPhonetic: { fontFamily: 'Kanit', fontSize: 13, color: '#AAA', textAlign: 'center', lineHeight: 14 },
+    chipThai: { fontSize: 18, marginBottom: 2, lineHeight: 26 }, 
+    chipPhonetic: { fontFamily: 'Kanit', fontSize: 12, color: '#AAA', textAlign: 'center', lineHeight: 16, marginBottom: 2 },
     chipZh: { 
         fontFamily: 'Prompt_700Bold', 
-        fontSize: 18,                
+        fontSize: 16,                
         color: '#444', 
         marginTop: 0, 
-        lineHeight: 20,
+        lineHeight: 22,
         textAlign: 'center',
         width: '100%'
     },
-    chipHint: { fontSize: 13, fontFamily: 'Kanit', marginTop: 8, fontWeight: '600', opacity: 0.3, lineHeight: 14 },
+    chipHint: { fontSize: 12, fontFamily: 'Kanit', marginTop: 6, fontWeight: '600', opacity: 0.3, lineHeight: 16 },
     connector: { width: 8, height: 110, marginTop: 34, alignItems: 'center', justifyContent: 'center' },
     particleChip: { borderWidth: 2, borderStyle: 'dashed' },
     mainSpeakBtn: { marginTop: 24, width: '100%', height: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },

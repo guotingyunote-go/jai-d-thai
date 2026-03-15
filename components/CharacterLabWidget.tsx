@@ -230,8 +230,8 @@ const styles = StyleSheet.create({
 
     guideContainer: { backgroundColor: '#FFF', borderRadius: 24, padding: 20, maxHeight: 500 },
     guideCard: { backgroundColor: '#F9F9FB', padding: 20, borderRadius: 18, marginBottom: 16 },
-    guideTitle: { fontFamily: 'Prompt_700Bold', fontSize: 22, color: '#333', marginBottom: 12 },
-    guideText: { fontFamily: 'Kanit', fontSize: 19, color: '#666', lineHeight: 26 },
+    guideTitle: { fontFamily: 'Prompt_700Bold', fontSize: 20, color: '#333', marginBottom: 12, lineHeight: 28 },
+    guideText: { fontFamily: 'Kanit', fontSize: 17, color: '#666', lineHeight: 28 },
     bold: { fontWeight: '700', color: '#111' },
     highlight: { color: '#000', backgroundColor: '#FFEBB5', paddingHorizontal: 4, fontWeight: '600' },
     step: { fontWeight: '700', color: '#FFF', backgroundColor: '#999', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, overflow: 'hidden', fontSize: 16, marginRight: 5 }

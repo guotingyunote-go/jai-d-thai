@@ -157,11 +157,11 @@ const styles = StyleSheet.create({
         alignItems: 'center', justifyContent: 'center'
     },
     backCard: { backgroundColor: '#F0F9F5' },
-    thaiText: { fontSize: 40, textAlign: 'center' },
-    fontLabel: { fontFamily: 'Kanit', fontSize: 15, color: '#BBB', marginTop: 4 },
+    thaiText: { fontSize: 36, textAlign: 'center', lineHeight: 48 },
+    fontLabel: { fontFamily: 'Kanit', fontSize: 14, color: '#BBB', marginTop: 4 },
     infoSide: { flex: 1, justifyContent: 'center' },
-    zhTW: { fontFamily: 'Prompt_700Bold', fontSize: 28, color: '#333' },
-    phonetic: { fontFamily: 'Kanit', fontSize: 18, color: '#888', marginBottom: 12 },
+    zhTW: { fontFamily: 'Prompt_700Bold', fontSize: 24, color: '#333', lineHeight: 32 },
+    phonetic: { fontFamily: 'Kanit', fontSize: 16, color: '#888', marginBottom: 12, lineHeight: 22 },
     playBtn: { paddingVertical: 8, paddingHorizontal: 12, borderRadius: 12, alignSelf: 'flex-start' },
     playIcon: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 16 }
 });

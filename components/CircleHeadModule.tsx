@@ -363,15 +363,16 @@ const styles = StyleSheet.create({
     },
     vocabWord: {
         fontFamily: 'Prompt_700Bold',
-        fontSize: 40,
+        fontSize: 34,
         color: '#222',
-        lineHeight: 44,
+        lineHeight: 46,
     },
     vocabPhonetic: {
         fontFamily: 'Kanit',
-        fontSize: 19,
+        fontSize: 18,
         color: '#888',
         letterSpacing: 0.5,
+        marginTop: 2,
     },
     pronounceBtn: {
         paddingHorizontal: 16,
@@ -391,14 +392,15 @@ const styles = StyleSheet.create({
     },
     vocabZhTW: {
         fontFamily: 'Prompt_500Medium',
-        fontSize: 26,
+        fontSize: 22,
         color: '#333',
         marginBottom: 8,
+        lineHeight: 30,
     },
     vocabNote: {
         fontFamily: 'Kanit',
-        fontSize: 17,
+        fontSize: 16,
         color: '#777',
-        lineHeight: 20,
+        lineHeight: 24,
     },
 });
