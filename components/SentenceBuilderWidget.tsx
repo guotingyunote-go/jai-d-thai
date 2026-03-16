@@ -212,15 +212,23 @@ export default function SentenceBuilderWidget() {
                         </TouchableOpacity>
                     </View>
                     <ScrollView style={{ maxHeight: 500 }}>
-                        <Text style={styles.infoText}>
-                            在泰語中，每句話的結尾通常會加上<Text style={styles.bold}>「性別語助詞」</Text>來表示禮貌：{'\n\n'}
-                            👨 <Text style={styles.bold}>男生：ครับ (kráp)</Text>{'\n'}
-                            唯一的禮貌用語。口語中常把 r 吃掉唸成「kap」。{'\n\n'}
-                            👩 <Text style={styles.bold}>女生：分為兩種！</Text>{'\n'}
-                            • <Text style={styles.bold}>ค่ะ (khâ)</Text>：標準泰語。適用於全泰國、曼谷、正式場合。{'\n'}
-                            • <Text style={styles.bold}>เจ้า (Jao)</Text>：泰北方言(蘭納語)。在清邁、清萊市集或部落使用，會讓當地人覺得超級親切、零距離！{'\n\n'}
-                            <Text style={{ color: '#888', fontSize: 17 }}>*(當你選取女結尾時，可以直接點擊語助詞按鈕進行模式切換)*</Text>
-                        </Text>
+                        <View style={{ gap: 12 }}>
+                            <Text style={styles.infoText}>
+                                在泰語中，每句話的結尾通常會加上<Text style={styles.bold}>「性別語助詞」</Text>來表示禮貌：
+                            </Text>
+                            <Text style={styles.infoText}>
+                                👨 <Text style={styles.bold}>男生：ครับ (kráp)</Text>{'\n'}
+                                唯一的禮貌用語。口語中常把 r 吃掉唸成「kap」。
+                            </Text>
+                            <Text style={styles.infoText}>
+                                👩 <Text style={styles.bold}>女生：分為兩種！</Text>{'\n'}
+                                • <Text style={styles.bold}>ค่ะ (khâ)</Text>：標準泰語。適用於全泰國、曼谷、正式場合。{'\n'}
+                                • <Text style={styles.bold}>เจ้า (Jao)</Text>：泰北方言(蘭納語)。在清邁、清萊市集或部落使用，會讓當地人覺得超級親切、零距離！
+                            </Text>
+                            <Text style={{ color: '#888', fontSize: 17, fontFamily: 'Kanit' }}>
+                                *(當你選取女結尾時，可以直接點擊語助詞按鈕進行模式切換)*
+                            </Text>
+                        </View>
                     </ScrollView>
                 </View>
             </View>
