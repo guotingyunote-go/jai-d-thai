@@ -281,9 +281,9 @@ export default function SentenceBuilderWidget() {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.widgetWrapper}>
             <View style={styles.header}>
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1, marginRight: 10 }}>
                     <Text style={[styles.title, { color: accentColor }]}>句型工作坊 🧱</Text>
                     <Text style={styles.subtitle}>
                         點擊下方色塊更換單字，打造你的專屬句子。
@@ -294,47 +294,49 @@ export default function SentenceBuilderWidget() {
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.slotContainer}>
-                <ChipContainer label="主詞" part={selection.p} onPress={() => setPickerType('p')} />
-                <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
-                <ChipContainer label="動詞" part={selection.v} onPress={() => setPickerType('v')} />
-                <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
-                <ChipContainer label="受詞" part={selection.o} onPress={() => setPickerType('o')} />
-                <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
-                {shouldShowParticle() ? (
-                    <ChipContainer
-                        label="語助詞"
-                        isParticle={true}
-                        particleContent={renderParticleContent()}
-                        onPress={() => {
-                            if (userGender === 'male') playSound('ครับ');
-                            else toggleFemaleParticle();
-                        }}
-                    />
-                ) : (
-                    <View style={styles.chipColumn}>
-                        <View style={styles.chipHeader}>
-                            <Text style={[styles.chipLabelExternal, { color: '#BBB' }]}>語助詞</Text>
-                        </View>
-                        <View style={[styles.chip, { backgroundColor: '#F8F8F8', borderColor: '#EEE', opacity: 0.5 }]}>
-                            <View style={styles.chipInner}>
-                                <View style={styles.thaiContainer}>
-                                    <Text style={[styles.chipThai, { color: '#CCC' }]}>-</Text>
+            <View style={styles.container}>
+                <View style={styles.slotContainer}>
+                    <ChipContainer label="主詞" part={selection.p} onPress={() => setPickerType('p')} />
+                    <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
+                    <ChipContainer label="動詞" part={selection.v} onPress={() => setPickerType('v')} />
+                    <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
+                    <ChipContainer label="受詞" part={selection.o} onPress={() => setPickerType('o')} />
+                    <View style={styles.connector}><Text style={{ color: accentColor }}>+</Text></View>
+                    {shouldShowParticle() ? (
+                        <ChipContainer
+                            label="語助詞"
+                            isParticle={true}
+                            particleContent={renderParticleContent()}
+                            onPress={() => {
+                                if (userGender === 'male') playSound('ครับ');
+                                else toggleFemaleParticle();
+                            }}
+                        />
+                    ) : (
+                        <View style={styles.chipColumn}>
+                            <View style={styles.chipHeader}>
+                                <Text style={[styles.chipLabelExternal, { color: '#BBB' }]}>語助詞</Text>
+                            </View>
+                            <View style={[styles.chip, { backgroundColor: '#F8F8F8', borderColor: '#EEE', opacity: 0.5 }]}>
+                                <View style={styles.chipInner}>
+                                    <View style={styles.thaiContainer}>
+                                        <Text style={[styles.chipThai, { color: '#CCC' }]}>-</Text>
+                                    </View>
+                                    <View style={styles.phoneticContainer} />
+                                    <View style={styles.zhContainer}>
+                                        <Text style={styles.chipZh}>無需結尾</Text>
+                                    </View>
+                                    <View style={styles.hintContainer} />
                                 </View>
-                                <View style={styles.phoneticContainer} />
-                                <View style={styles.zhContainer}>
-                                    <Text style={styles.chipZh}>無需結尾</Text>
-                                </View>
-                                <View style={styles.hintContainer} />
                             </View>
                         </View>
-                    </View>
-                )}
-            </View>
+                    )}
+                </View>
 
-            <TouchableOpacity style={[styles.mainSpeakBtn, { backgroundColor: accentColor }]} onPress={speak}>
-                <Text style={styles.mainSpeakText}>🔊 播放完整句子</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={[styles.mainSpeakBtn, { backgroundColor: accentColor }]} onPress={speak}>
+                    <Text style={styles.mainSpeakText}>🔊 播放完整句子</Text>
+                </TouchableOpacity>
+            </View>
 
             {renderPicker()}
             {renderParticleInfo()}
@@ -343,20 +345,19 @@ export default function SentenceBuilderWidget() {
 }
 
 const styles = StyleSheet.create({
+    widgetWrapper: { width: '100%', marginBottom: 36 },
     container: {
-        width: '100%', marginBottom: 20, backgroundColor: '#FFF', padding: 12, borderRadius: 24, // 減少內邊距增加寬度
+        width: '100%', backgroundColor: '#FFF', padding: 14, borderRadius: 24,
         shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2
     },
-    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16, paddingHorizontal: 4 },
+    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
     title: { fontFamily: 'Prompt_700Bold', fontSize: 22, fontWeight: 'bold' },
-    subtitle: { fontFamily: 'Kanit', fontSize: 16, color: '#AAA', lineHeight: 18, marginTop: 4, flex: 1, paddingRight: 4 },
-    randomBtn: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 10 },
-    randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18 },
+    subtitle: { fontFamily: 'Kanit', fontSize: 16, color: '#AAA', lineHeight: 22, marginTop: 4 },
+    randomBtn: { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12 },
+    randomBtnText: { color: '#FFF', fontFamily: 'Kanit_600SemiBold', fontSize: 18, fontWeight: 'bold' },
     slotContainer: { 
         flexDirection: 'row', 
         alignItems: 'flex-start', 
-        gap: 0, // 移除間距改用 flex 控制
-        marginTop: 12,
         width: '100%',
     },
     chipColumn: { flex: 1, alignItems: 'center', zIndex: 1 },

@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     appNameZH: { fontFamily: 'Kanit_600SemiBold', fontSize: 18, color: '#888', fontWeight: 'bold', marginBottom: 4 },
     modeBadge: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 16 },
     modeBadgeText: { fontFamily: 'Kanit', fontSize: 15, fontWeight: 'bold' },
-    sectionWrapper: { marginTop: 28 },
+    sectionWrapper: { marginTop: 16 },
     sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 },
     sectionDot: { width: 8, height: 8, borderRadius: 4 },
     sectionTitle: { fontFamily: 'Prompt_700Bold', fontSize: 22, letterSpacing: 0.5, fontWeight: 'bold' },
@@ -226,5 +226,5 @@ const styles = StyleSheet.create({
     },
     dropdownItem: { padding: 12, borderRadius: 10 },
     dropdownItemText: { fontFamily: 'Kanit', fontSize: 19, color: '#555' },
-    listContainer: { gap: 0, marginTop: 10 },
+    listContainer: { gap: 0, marginTop: 4 },
 });

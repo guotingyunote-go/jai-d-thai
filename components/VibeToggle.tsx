@@ -42,7 +42,7 @@ export default function VibeToggle() {
                             transform: [{
                                 translateX: fadeAnim.interpolate({
                                     inputRange: [0, 1],
-                                    outputRange: [2, 24]
+                                    outputRange: [2, 20]
                                 })
                             }]
                         }
@@ -93,14 +93,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 32,
+        paddingHorizontal: 16,
+        borderRadius: 24,
     },
-    labelWrapper: { alignItems: 'center' },
-    emoji: { fontSize: 22 },
-    customSwitch: { width: 50, height: 28, borderRadius: 14, backgroundColor: 'rgba(255,255,255,0.3)', justifyContent: 'center', marginHorizontal: 12 },
-    customThumb: { width: 24, height: 24, borderRadius: 12, backgroundColor: '#FFF', position: 'absolute' },
-    label: { fontFamily: 'Kanit_600SemiBold', fontSize: 17, marginTop: 2 },
+    labelWrapper: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+    emoji: { fontSize: 16 },
+    customSwitch: { width: 44, height: 26, borderRadius: 13, backgroundColor: 'rgba(255,255,255,0.3)', justifyContent: 'center', marginHorizontal: 10 },
+    customThumb: { width: 22, height: 22, borderRadius: 11, backgroundColor: '#FFF', position: 'absolute' },
+    label: { fontFamily: 'Kanit_600SemiBold', fontSize: 16 },
     activeText: { color: '#FFFFFF' },
     inactiveText: { color: 'rgba(255,255,255,0.5)' },
     controlsRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 20 },
