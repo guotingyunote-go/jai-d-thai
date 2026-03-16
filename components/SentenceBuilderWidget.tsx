@@ -9,7 +9,7 @@ import { useVibe } from '../context/VibeContext';
 export default function SentenceBuilderWidget() {
     const { mode, userGender, fontType, femaleParticle, toggleFemaleParticle } = useVibe() as any;
     const isFaith = mode === 'faith';
-    const accentColor = isFaith ? '#7851A9' : '#14B886';
+    const accentColor = isFaith ? '#7851A9' : '#0F9E71';
     const thaiFont = fontType === 'headed' ? 'Sarabun_700Bold' : 'Kanit_600SemiBold';
 
     const [selection, setSelection] = useState(() => {

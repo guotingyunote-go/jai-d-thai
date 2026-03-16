@@ -11,8 +11,9 @@ import { useVibe } from '../context/VibeContext';
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function Home() {
-    const { mode, accentColor, userGender, femaleParticle } = useVibe() as any;
+    const { mode, userGender, femaleParticle } = useVibe() as any;
     const isFaith = mode === 'faith';
+    const accentColor = isFaith ? '#7851A9' : '#0F9E71';
 
     const accentLight = isFaith ? '#F0EBF9' : '#E6F5F0';
     const bgColor = isFaith ? '#F4F0FB' : '#F0F9F5';

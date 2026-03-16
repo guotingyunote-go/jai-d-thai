@@ -12,7 +12,7 @@ export default function WordMasterWidget() {
     const flipAnim = React.useRef(new Animated.Value(fontType === 'loopless' ? 1 : 0)).current;
 
     const isFaith = mode === 'faith';
-    const accentColor = isFaith ? '#7851A9' : '#14B886';
+    const accentColor = isFaith ? '#7851A9' : '#0F9E71';
 
     useEffect(() => {
         refreshWord();

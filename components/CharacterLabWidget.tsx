@@ -12,7 +12,7 @@ export default function CharacterLabWidget() {
     const [activeTab, setActiveTab] = useState<'card' | 'guide'>('card');
 
     const isFaith = mode === 'faith';
-    const accentColor = isFaith ? '#7851A9' : '#14B886';
+    const accentColor = isFaith ? '#7851A9' : '#0F9E71';
     const currentLesson = LESSONS[index % LESSONS.length];
     
     // 根據 Toggle 決定主顯示字體
@@ -127,9 +127,9 @@ export default function CharacterLabWidget() {
                 <View style={styles.examplesSection}>
                     <Text style={[styles.sectionLabel, { marginBottom: 12 }]}>單字範例應用 💡</Text>
                     <View style={styles.exampleRow}>
-                        <TouchableOpacity style={[styles.exampleItem, { borderLeftColor: '#14B886' }]} onPress={() => playSound(currentLesson.street.thai)}>
+                        <TouchableOpacity style={[styles.exampleItem, { borderLeftColor: '#0F9E71' }]} onPress={() => playSound(currentLesson.street.thai)}>
                             <Text style={styles.exampleTag}>生活模式 (Street)</Text>
-                            <Text style={[styles.exampleThai, { color: '#14B886' }]}>{currentLesson.street.thai}</Text>
+                            <Text style={[styles.exampleThai, { color: '#0F9E71' }]}>{currentLesson.street.thai}</Text>
                             <Text style={styles.examplePhonetic}>{currentLesson.street.phonetic}</Text>
                             <Text style={styles.exampleZh}>{currentLesson.street.zhTW}</Text>
                         </TouchableOpacity>
