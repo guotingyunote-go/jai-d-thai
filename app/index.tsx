@@ -175,11 +175,9 @@ export default function Home() {
                 </View>
 
                 {/* ── Tier 3: Character Lab 🖊️ 放到最後 ── */}
-                <View style={{ marginTop: 40, paddingBottom: 20 }}>
+                <View style={{ marginTop: 52 }}>
                     <CharacterLabWidget />
                 </View>
-
-                <View style={{ height: 60 }} />
             </ScrollView>
         </SafeAreaView>
     );

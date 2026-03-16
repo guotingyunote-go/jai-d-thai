@@ -137,7 +137,7 @@ export default function WordMasterWidget() {
 }
 
 const styles = StyleSheet.create({
-    container: { width: '100%', marginBottom: 36 },
+    container: { width: '100%', marginBottom: 48 },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
     title: { fontFamily: 'Prompt_700Bold', fontSize: 22, fontWeight: 'bold' },
     refresh: { fontFamily: 'Kanit', fontSize: 17, color: '#AAA' },

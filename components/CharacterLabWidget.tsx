@@ -187,7 +187,7 @@ export default function CharacterLabWidget() {
 }
 
 const styles = StyleSheet.create({
-    container: { width: '100%', marginBottom: 32 },
+    container: { width: '100%', marginBottom: 12 },
     header: { marginBottom: 16 },
     title: { fontFamily: 'Prompt_700Bold', fontSize: 28 },
     headerSubtitle: { fontFamily: 'Kanit', fontSize: 17, color: '#AAA' },

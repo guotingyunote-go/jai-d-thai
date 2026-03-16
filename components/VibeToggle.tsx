@@ -87,7 +87,7 @@ export default function VibeToggle() {
 }
 
 const styles = StyleSheet.create({
-    outerContainer: { gap: 10, marginVertical: 8 },
+    outerContainer: { gap: 18, marginVertical: 24 },
     container: {
         flexDirection: 'row',
         alignItems: 'center',

@@ -345,7 +345,7 @@ export default function SentenceBuilderWidget() {
 }
 
 const styles = StyleSheet.create({
-    widgetWrapper: { width: '100%', marginBottom: 36 },
+    widgetWrapper: { width: '100%', marginBottom: 48 },
     container: {
         width: '100%', backgroundColor: '#FFF', padding: 14, borderRadius: 24,
         shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 10, elevation: 2
