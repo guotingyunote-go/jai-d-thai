@@ -197,7 +197,7 @@ export default function SentenceBuilderWidget() {
         return {
             thai: isMale ? 'ครับ' : (isKha ? 'ค่ะ' : 'เจ้า'),
             phonetic: isMale ? 'kráp' : (isKha ? 'khâ' : 'jâo'),
-            zh: isMale ? '先生/男聲' : (isKha ? '標準女聲' : '泰北女聲')
+            zh: isMale ? '男結尾' : (isKha ? '標準女結尾' : '泰北女結尾')
         };
     };
 
@@ -219,7 +219,7 @@ export default function SentenceBuilderWidget() {
                             👩 <Text style={styles.bold}>女生：分為兩種！</Text>{'\n'}
                             • <Text style={styles.bold}>ค่ะ (khâ)</Text>：標準泰語。適用於全泰國、曼谷、正式場合。{'\n'}
                             • <Text style={styles.bold}>เจ้า (Jao)</Text>：泰北方言(蘭納語)。在清邁、清萊市集或部落使用，會讓當地人覺得超級親切、零距離！{'\n\n'}
-                            <Text style={{ color: '#888', fontSize: 17 }}>*(當你選取女聲時，可以直接點擊語助詞按鈕進行模式切換)</Text>
+                            <Text style={{ color: '#888', fontSize: 17 }}>*(當你選取女結尾時，可以直接點擊語助詞按鈕進行模式切換)*</Text>
                         </Text>
                     </ScrollView>
                 </View>
