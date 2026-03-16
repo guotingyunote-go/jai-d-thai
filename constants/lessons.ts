@@ -38,7 +38,7 @@ export const LESSONS: Lesson[] = [
     pathLength: 320,
     startPoint: { cx: 40, cy: 25 },
     street: { thai: 'ขวด', phonetic: 'khùat', zhTW: '瓶子', note: 'ขอ ขวด 的由來' },
-    faith: { thai: 'ขงจื๊อ', phonetic: 'khǒng-jʉ́ʉ', zhTW: '教導', note: '指崇高的教義(古用法)' }
+    faith: { thai: 'ขวด', phonetic: 'khùat', zhTW: '瓶子', note: '新酒裝在新皮袋' }
   },
   {
     id: 'char-ค',
@@ -212,15 +212,15 @@ export const LESSONS: Lesson[] = [
   {
     id: 'char-ฑ',
     letter: 'ฑ',
-    letterLabel: 'ฑอ มณโฑ (曼陀)',
+    letterLabel: 'ฑอ (Tho)',
     nameThai: 'ฑอ มณโฑ',
     letterClass: '低聲調類',
-    emoji: '👸',
+    emoji: '🎓',
     svgPath: 'M 30,45 A 6,6 0 1,1 42,45 A 6,6 0 1,1 30,45 A 6,6 0 1,1 54,45 M 42,51 L 42,85 L 65,85 L 65,50 Q 65,30 85,30',
     pathLength: 280,
     startPoint: { cx: 30, cy: 45 },
-    street: { thai: 'มณโฑ', phonetic: 'mon-thoo', zhTW: '曼陀(神話人物)', note: 'ฑอ มณโฑ 的由來' },
-    faith: { thai: 'มณโฑ', phonetic: 'mon-thoo', zhTW: '曼陀', note: '指古時聖地或人物' }
+    street: { thai: 'บัณฑิต', phonetic: 'ban-dít', zhTW: '智者', note: '學者/智者' },
+    faith: { thai: 'มณฑล', phonetic: 'mon-thon', zhTW: '地區/境界', note: '擴張福音的境界' }
   },
   {
     id: 'char-ฒ',
@@ -238,15 +238,15 @@ export const LESSONS: Lesson[] = [
   {
     id: 'char-ณ',
     letter: 'ณ',
-    letterLabel: 'ณอ เณร (沙彌)',
+    letterLabel: 'ณอ (No)',
     nameThai: 'ณอ เณร',
     letterClass: '低聲調類',
-    emoji: '🪷',
+    emoji: '👑',
     svgPath: 'M 30,45 A 6,6 0 1,0 18,45 A 6,6 0 1,0 30,45 M 24,51 L 24,90 M 24,51 Q 24,25 45,25 Q 55,25 55,45 L 55,90 Q 55,70 75,70 L 90,70 L 90,40',
     pathLength: 300,
     startPoint: { cx: 30, cy: 45 },
-    street: { thai: 'เณร', phonetic: 'neen', zhTW: '沙彌', note: 'ณอ เณร 的由來' },
-    faith: { thai: 'กษัตริย์', phonetic: 'gà-sàt', zhTW: '君王', note: '萬王之王(含此字母)' }
+    street: { thai: 'บริเวณ', phonetic: 'bɔ-ri-ween', zhTW: '區域', note: '常見含 ณ 的字' },
+    faith: { thai: 'พระคุณ', phonetic: 'phrá-khun', zhTW: '恩典', note: '神的浩大恩典' }
   },
   {
     id: 'char-ด',
@@ -433,14 +433,14 @@ export const LESSONS: Lesson[] = [
   {
     id: 'char-ย',
     letter: 'ย',
-    letterLabel: 'ยอ ยักษ์ (夜叉)',
+    letterLabel: 'ยอ (Yo)',
     nameThai: 'ยอ ยักษ์',
     letterClass: '低聲調類',
-    emoji: '👹',
+    emoji: '👵',
     svgPath: 'M 25,40 A 6,6 0 1,1 37,40 A 6,6 0 1,1 25,40 M 31,46 L 31,75 L 20,75 L 20,90 L 65,90 L 65,40 Q 65,20 85,20',
     pathLength: 300,
     startPoint: { cx: 25, cy: 40 },
-    street: { thai: 'ยักษ์', phonetic: 'yák', zhTW: '夜叉', note: 'ยอ ยักษ์ 的由來' },
+    street: { thai: 'ยาย', phonetic: 'yaai', zhTW: '外婆', note: '常見單字' },
     faith: { thai: 'ยึดมั่น', phonetic: 'yʉ́t mân', zhTW: '持守', note: '持守真理與誠實' }
   },
   {
@@ -498,15 +498,15 @@ export const LESSONS: Lesson[] = [
   {
     id: 'char-ษ',
     letter: 'ษ',
-    letterLabel: 'ษอ ฤๅษี (隱士)',
+    letterLabel: 'ษอ (So)',
     nameThai: 'ษอ ฤๅษี',
     letterClass: '高聲調類',
-    emoji: '🧙',
+    emoji: '📄',
     svgPath: 'M 30,25 A 7,7 0 1,1 44,25 A 7,7 0 1,1 30,25 M 37,32 L 37,75 Q 37,90 55,90 L 75,90 L 75,25 M 50,55 L 75,55',
     pathLength: 320,
     startPoint: { cx: 30, cy: 25 },
-    street: { thai: 'ฤๅษี', phonetic: 'rʉʉ-sǐi', zhTW: '隱士', note: 'ษอ ฤๅษี 的由來' },
-    faith: { thai: 'พิษ', phonetic: 'phít', zhTW: '毒', note: '聖經中提到「蛇的毒氣」(含此字母)' }
+    street: { thai: 'กระดาษ', phonetic: 'grà-dàat', zhTW: '紙', note: '常見含 ษ 的字' },
+    faith: { thai: 'ศิษย์', phonetic: 'sìt', zhTW: '門徒', note: '跟隨主的門徒' }
   },
   {
     id: 'char-ส',
@@ -573,4 +573,51 @@ export const LESSONS: Lesson[] = [
     street: { thai: 'นกฮูก', phonetic: 'nók-hûuk', zhTW: '貓頭鷹', note: 'ฮอ นกฮูก 的由來' },
     faith: { thai: 'อัลเลลูยา', phonetic: 'al-lee-luu-yaa', zhTW: '阿利路亞', note: '讚美耶和華' }
   },
+];
+
+export const THAI_ALPHABET = [
+  { char: 'ก', name: 'Kor Kai', class: 'middle', initial: 'g', final: 'k' },
+  { char: 'ข', name: 'Khor Khai', class: 'high', initial: 'kh', final: 'k' },
+  { char: 'ฃ', name: 'Khor Khuat', class: 'high', initial: 'kh', final: 'k' },
+  { char: 'ค', name: 'Khor Khwai', class: 'low', initial: 'kh', final: 'k' },
+  { char: 'ฅ', name: 'Khor Khon', class: 'low', initial: 'kh', final: 'k' },
+  { char: 'ฆ', name: 'Khor Rakhang', class: 'low', initial: 'kh', final: 'k' },
+  { char: 'ง', name: 'Ngor Ngu', class: 'low', initial: 'ng', final: 'ng' },
+  { char: 'จ', name: 'Jor Jan', class: 'middle', initial: 'j', final: 't' },
+  { char: 'ฉ', name: 'Chor Ching', class: 'high', initial: 'ch', final: '-' },
+  { char: 'ช', name: 'Chor Chang', class: 'low', initial: 'ch', final: 't' },
+  { char: 'ซ', name: 'Sor So', class: 'low', initial: 's', final: 't' },
+  { char: 'ฌ', name: 'Chor Choe', class: 'low', initial: 'ch', final: '-' },
+  { char: 'ญ', name: 'Yor Ying', class: 'low', initial: 'y', final: 'n' },
+  { char: 'ฎ', name: 'Dor Chada', class: 'middle', initial: 'd', final: 't' },
+  { char: 'ฏ', name: 'Tor Patak', class: 'middle', initial: 't', final: 't' },
+  { char: 'ฐ', name: 'Thor Than', class: 'high', initial: 'th', final: 't' },
+  { char: 'ฑ', name: 'Thor Montho', class: 'low', initial: 'th', final: 't' },
+  { char: 'ฒ', name: 'Thor Phu Thao', class: 'low', initial: 'th', final: 't' },
+  { char: 'ณ', name: 'Nor Nen', class: 'low', initial: 'n', final: 'n' },
+  { char: 'ด', name: 'Dor Dek', class: 'middle', initial: 'd', final: 't' },
+  { char: 'ต', name: 'Tor Tao', class: 'middle', initial: 't', final: 't' },
+  { char: 'ถ', name: 'Thor Thung', class: 'high', initial: 'th', final: 't' },
+  { char: 'ท', name: 'Thor Thahan', class: 'low', initial: 'th', final: 't' },
+  { char: 'ธ', name: 'Thor Thong', class: 'low', initial: 'th', final: 't' },
+  { char: 'น', name: 'Nor Nu', class: 'low', initial: 'n', final: 'n' },
+  { char: 'บ', name: 'Bor Baimai', class: 'middle', initial: 'b', final: 'p' },
+  { char: 'ป', name: 'Por Pla', class: 'middle', initial: 'p', final: 'p' },
+  { char: 'ผ', name: 'Phor Phueng', class: 'high', initial: 'ph', final: '-' },
+  { char: 'ฝ', name: 'For Fa', class: 'high', initial: 'f', final: '-' },
+  { char: 'พ', name: 'Phor Phan', class: 'low', initial: 'ph', final: 'p' },
+  { char: 'ฟ', name: 'For Fan', class: 'low', initial: 'f', final: 'p' },
+  { char: 'ภ', name: 'Phor Samphao', class: 'low', initial: 'ph', final: 'p' },
+  { char: 'ม', name: 'Mor Ma', class: 'low', initial: 'm', final: 'm' },
+  { char: 'ย', name: 'Yor Yak', class: 'low', initial: 'y', final: 'y' },
+  { char: 'ร', name: 'Ror Ruea', class: 'low', initial: 'r', final: 'n' },
+  { char: 'ล', name: 'Lor Ling', class: 'low', initial: 'l', final: 'n' },
+  { char: 'ว', name: 'Wor Waen', class: 'low', initial: 'w', final: 'w' },
+  { char: 'ศ', name: 'Sor Sala', class: 'high', initial: 's', final: 't' },
+  { char: 'ษ', name: 'Sor Rusi', class: 'high', initial: 's', final: 't' },
+  { char: 'ส', name: 'Sor Suea', class: 'high', initial: 's', final: 't' },
+  { char: 'ห', name: 'Hor Hip', class: 'high', initial: 'h', final: '-' },
+  { char: 'ฬ', name: 'Lor Chula', class: 'low', initial: 'l', final: 'n' },
+  { char: 'อ', name: 'Or Ang', class: 'middle', initial: 'o', final: '-' },
+  { char: 'ฮ', name: 'Hor Nok Huk', class: 'low', initial: 'h', final: '-' }
 ];
