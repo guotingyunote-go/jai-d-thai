@@ -3,18 +3,14 @@ import * as Speech from 'expo-speech';
 import React, { useRef, useState } from 'react';
 import {
     Animated,
-    Easing,
     StyleSheet,
     Text,
     TouchableOpacity,
     TouchableWithoutFeedback,
     View
 } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
 import type { DictionaryEntry } from '../constants/Dictionary';
 import { useVibe } from '../context/VibeContext';
-
-const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 interface Props {
     entry: DictionaryEntry;
@@ -26,24 +22,9 @@ export default function DictionaryCard({ entry, accentColor, accentLight }: Prop
     const { userGender, fontType } = useVibe() as any;
     const thaiFont = fontType === 'headed' ? 'Sarabun_700Bold' : 'Kanit_600SemiBold';
     const scaleAnim = useRef(new Animated.Value(1)).current;
-    const toneProgress = useRef(new Animated.Value(0)).current;
-    const toneOpacity = useRef(new Animated.Value(0)).current;
 
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [expanded, setExpanded] = useState(false);
-
-    // 簡單判斷聲調 (平、低、降、高、升)，如果不確定就用預設的平調
-    const getTonePath = () => {
-        // [x1, y1] to [x2, y2] ... y 越小越高
-        const p = entry.phonetic.toLowerCase();
-        if (p.includes('â') || p.includes('ô') || p.includes('ê') || p.includes('û') || p.includes('î')) return 'M 5,5 L 35,35'; // 降調 (ˋ) ↘
-        if (p.includes('á') || p.includes('ó') || p.includes('é') || p.includes('ú') || p.includes('í')) return 'M 5,20 L 35,5';  // 高調 (´) ↗
-        if (p.includes('ǎ') || p.includes('ǒ') || p.includes('ě') || p.includes('ǔ') || p.includes('ǐ')) return 'M 5,20 L 20,35 L 35,5'; // 升調 (ˇ) ↘↗
-        if (p.includes('à') || p.includes('ò') || p.includes('è') || p.includes('ù') || p.includes('ì')) return 'M 5,30 L 35,35'; // 低調 ↘_
-        return 'M 5,20 L 35,20'; // 平調 →
-    };
-
-    const tonePath = getTonePath();
 
     const springTo = (toValue: number) => {
         Animated.spring(scaleAnim, {
@@ -75,17 +56,6 @@ export default function DictionaryCard({ entry, accentColor, accentLight }: Prop
             }
 
             setIsSpeaking(true);
-
-            // 觸發聲調動畫
-            toneProgress.setValue(0);
-            toneOpacity.setValue(1);
-            Animated.timing(toneProgress, {
-                toValue: 1,
-                // 設定一秒，大概是一個字發音的時間
-                duration: 800,
-                easing: Easing.out(Easing.ease),
-                useNativeDriver: true,
-            }).start();
 
             // Fetch voices but don't let it crash the function
             let voiceIdentifier = undefined;
@@ -121,23 +91,15 @@ export default function DictionaryCard({ entry, accentColor, accentLight }: Prop
                 voice: voiceIdentifier,
                 onDone: () => {
                     setIsSpeaking(false);
-                    // 語音結束後淡出聲調線條
-                    Animated.timing(toneOpacity, {
-                        toValue: 0,
-                        duration: 300,
-                        useNativeDriver: true,
-                    }).start();
                 },
                 onError: (err) => {
                     console.error('Speech.speak error:', err);
                     setIsSpeaking(false);
-                    Animated.timing(toneOpacity, { toValue: 0, duration: 300, useNativeDriver: true }).start();
                 },
             });
         } catch (globalError) {
             console.error('Speak function failed:', globalError);
             setIsSpeaking(false);
-            Animated.timing(toneOpacity, { toValue: 0, duration: 300, useNativeDriver: true }).start();
         }
     };
 
@@ -168,24 +130,6 @@ export default function DictionaryCard({ entry, accentColor, accentLight }: Prop
                                 {entry.tone}
                             </Text>
                         </View>
-
-                        {/* 聲調動畫畫布 */}
-                        <Animated.View style={{ height: 40, width: 40, opacity: toneOpacity, position: 'absolute', right: -45, top: 0 }}>
-                            <Svg height="40" width="40" viewBox="0 0 40 40">
-                                <AnimatedPath
-                                    d={tonePath}
-                                    fill="none"
-                                    stroke={accentColor}
-                                    strokeWidth="3"
-                                    strokeLinecap="round"
-                                    strokeDasharray={100}
-                                    strokeDashoffset={toneProgress.interpolate({
-                                        inputRange: [0, 1],
-                                        outputRange: [100, 0]
-                                    })}
-                                />
-                            </Svg>
-                        </Animated.View>
                     </View>
 
                     <TouchableOpacity
